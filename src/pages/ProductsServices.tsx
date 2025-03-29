@@ -1,4 +1,3 @@
-// src/pages/ProductsServices.tsx
 import React from 'react';
 import Navbar from '../components/Navbar';
 import './ProductsServices.css';
