@@ -10,16 +10,16 @@ const Contributors: React.FC = () => {
         <h1>Our Contributors</h1>
         <div className="contributors-list">
           <div className="contributor-card">
-            <h3>John Doe</h3>
+            <h3>Mark Zuckerberg</h3>
             <p>Lead Developer</p>
           </div>
           <div className="contributor-card">
-            <h3>Jane Smith</h3>
-            <p>UI/UX Designer</p>
+            <h3>Lucifer</h3>
+            <p>VP and Marketing Head</p>
           </div>
           <div className="contributor-card">
-            <h3>Tony Stark</h3>
-            <p>Associate</p>
+            <h3>Vemy Salvatore</h3>
+            <p>CEO</p>
           </div>
         </div>
       </div>
