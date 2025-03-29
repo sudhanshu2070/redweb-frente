@@ -8,7 +8,7 @@ const Home: React.FC = () => {
     <div className="home">
       <Navbar />
       <div className="hero">
-        <h1>Welcome to Our Company</h1>
+        <h1>Welcome to the Redweb</h1>
         <p>Building cool, user-friendly, responsive websites and mobile apps</p>
         <button className="cta-button">Get Started</button>
       </div>

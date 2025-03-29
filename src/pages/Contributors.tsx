@@ -18,6 +18,10 @@ const Contributors: React.FC = () => {
             <h3>Jane Smith</h3>
             <p>UI/UX Designer</p>
           </div>
+          <div className="contributor-card">
+            <h3>Tony Stark</h3>
+            <p>Associate</p>
+          </div>
         </div>
       </div>
     </div>
