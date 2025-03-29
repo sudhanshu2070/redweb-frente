@@ -1,0 +1,22 @@
+/* src/pages/Contributors.css */
+.contributors {
+    min-height: 100vh;
+  }
+  
+  .content {
+    padding: 2rem;
+  }
+  
+  .contributors-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .contributor-card {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 200px;
+  }

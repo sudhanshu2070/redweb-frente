@@ -1,0 +1,21 @@
+/* src/pages/ProductsServices.css */
+.products-services {
+    min-height: 100vh;
+  }
+  
+  .content {
+    padding: 2rem;
+  }
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .service-card {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
