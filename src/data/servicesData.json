@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Modern Website Development",
+    "description": "Cutting-edge websites with responsive design",
+    "icon": "🌐",
+    "color": "#4A90E2"
+  },
+  {
+    "id": 2,
+    "title": "Mobile App Creation",
+    "description": "Native and cross-platform mobile solutions",
+    "icon": "📱",
+    "color": "#50E3C2"
+  },
+  {
+    "id": 3,
+    "title": "Logo Design",
+    "description": "Unique and memorable brand identities",
+    "icon": "🎨",
+    "color": "#F5A623"
+  },
+  {
+    "id": 4,
+    "title": "Portfolio Management",
+    "description": "Professional asset organization",
+    "icon": "📊",
+    "color": "#7ED321"
+  },
+  {
+    "id": 5,
+    "title": "Monitoring Dashboards",
+    "description": "Real-time data visualization",
+    "icon": "📈",
+    "color": "#9013FE"
+  },
+  {
+    "id": 6,
+    "title": "Website Redesign",
+    "description": "Refreshing your digital presence",
+    "icon": "🔄",
+    "color": "#D0021B"
+  }
+]

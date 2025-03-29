@@ -1,11 +1,74 @@
 .about {
-    min-height: 100vh;
-  }
-  
-  .content {
-    padding: 2rem;
-  }
-  
-  .content ul {
-    list-style-position: inside;
-  }
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  padding: 2rem;
+  overflow-x: hidden;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.animated-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+  transform: perspective(800px) rotateX(0deg) rotateY(0deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  width: 100%;
+  max-width: 600px;
+  border-left: 5px solid var(--service-color); /* Dynamic color */
+}
+
+.service-item:hover {
+  transform: perspective(800px) rotateX(5deg) rotateY(5deg);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 1);
+}
+
+.icon {
+  font-size: 2rem;
+  color: var(--service-color); /* Dynamic color */
+}
+
+.service-details {
+  text-align: left;
+}
+
+.service-details h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.service-details p {
+  font-size: 1rem;
+  color: #666;
+}

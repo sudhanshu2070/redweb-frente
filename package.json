@@ -14,9 +14,12 @@
     "@types/react-router-dom": "^5.3.3",
     "ajv": "6.12.6",
     "ajv-keywords": "3.5.2",
+    "framer-motion": "^12.6.2",
+    "gsap": "^3.12.7",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.4.1",
+    "styled-components": "^6.1.16",
     "typescript": "^5.8.2",
     "web-vitals": "^4.2.4"
   },
