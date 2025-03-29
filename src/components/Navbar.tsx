@@ -15,7 +15,12 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Hamburger Menu for Mobile */}
-      <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+      <div
+        className={`hamburger ${isMenuOpen ? 'open' : ''}`}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        role="button"
+        aria-label="Toggle navigation menu"
+      >
         <span></span>
         <span></span>
         <span></span>
@@ -27,7 +32,7 @@ const Navbar: React.FC = () => {
           <NavLink
             to="/"
             className={({ isActive }) => (isActive ? 'active' : '')}
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => setIsMenuOpen(false)} // Close menu after clicking
           >
             Home
           </NavLink>
@@ -36,7 +41,7 @@ const Navbar: React.FC = () => {
           <NavLink
             to="/about"
             className={({ isActive }) => (isActive ? 'active' : '')}
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => setIsMenuOpen(false)} // Close menu after clicking
           >
             About
           </NavLink>
@@ -45,7 +50,7 @@ const Navbar: React.FC = () => {
           <NavLink
             to="/products-services"
             className={({ isActive }) => (isActive ? 'active' : '')}
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => setIsMenuOpen(false)} // Close menu after clicking
           >
             Products & Services
           </NavLink>
@@ -54,7 +59,7 @@ const Navbar: React.FC = () => {
           <NavLink
             to="/contributors"
             className={({ isActive }) => (isActive ? 'active' : '')}
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => setIsMenuOpen(false)} // Close menu after clicking
           >
             Contributors
           </NavLink>
