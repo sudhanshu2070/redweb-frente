@@ -1,65 +1,37 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
 import './About.css';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 import { aboutData } from '../data/aboutData';
 
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
-
 const About: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const missionSectionRef = useRef<HTMLDivElement>(null);
-  const serviceCardsRef = useRef<HTMLLIElement[]>([]);
-  const heroHeadlineRef = useRef<HTMLHeadingElement>(null);
-  const heroSubheadRef = useRef<HTMLParagraphElement>(null);
+  const serviceCardsRef = useRef<(HTMLLIElement | null)[]>([]);
 
   useEffect(() => {
-    // Hero animation
-    gsap.from([heroHeadlineRef.current, heroSubheadRef.current], {
-      duration: 1.2,
-      y: 50,
-      opacity: 0,
-      stagger: 0.2,
-      ease: 'power3.out'
-    });
+    // Trigger initial animations
+    setIsVisible(true);
 
-    // Service items animation
-    gsap.set(serviceCardsRef.current, { 
-      opacity: 0, 
-      y: 80,
-      scale: 0.95
-    });
-
-    serviceCardsRef.current.forEach((item, index) => {
-      gsap.to(item, {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.8,
-        ease: 'back.out(1.2)',
-        delay: index * 0.15,
-        scrollTrigger: {
-          trigger: item,
-          start: 'top 75%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-    });
-
-    // Section background animation
-    gsap.to(missionSectionRef.current, {
-      scrollTrigger: {
-        trigger: missionSectionRef.current,
-        start: 'top center',
-        end: 'bottom center',
-        scrub: 1
+    // Set up Intersection Observer for service cards
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
       },
-      backgroundColor: 'rgba(249, 249, 249, 0.8)'
+      { threshold: 0.1 }
+    );
+
+    serviceCardsRef.current.forEach(card => {
+      if (card) observer.observe(card);
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      serviceCardsRef.current.forEach(card => {
+        if (card) observer.unobserve(card);
+      });
     };
   }, []);
 
@@ -67,13 +39,12 @@ const About: React.FC = () => {
     <div className="about-container">
       <Navbar />
       
-      <section className="about-hero-section">
+      <section className={`about-hero-section ${isVisible ? 'animate-in' : ''}`}>
         <div className="about-hero-content">
-          <h1 ref={heroHeadlineRef} className="about-hero-headline">
-            {/* Crafting  */}
-            <span className="about-hero-highlight">Crafting Digital Excellence</span>
+          <h1 className="about-hero-headline">
+            Crafting <span className="about-hero-highlight">Digital Excellence</span>
           </h1>
-          <p ref={heroSubheadRef} className="about-hero-subhead">
+          <p className="about-hero-subhead">
             We transform ideas into impactful digital experiences through innovation and expertise
           </p>
         </div>
@@ -92,18 +63,12 @@ const About: React.FC = () => {
             </p>
           </div>
           <div className="about-mission-stats">
-            <div className="about-mission-stat">
-              <span className="about-mission-stat-number" data-count="150">27</span>
-              <span className="about-mission-stat-label">Projects Completed</span>
-            </div>
-            <div className="about-mission-stat">
-              <span className="about-mission-stat-number" data-count="98">24</span>
-              <span className="about-mission-stat-label">Client Satisfaction</span>
-            </div>
-            <div className="about-mission-stat">
-              <span className="about-mission-stat-number" data-count="12">4.5</span>
-              <span className="about-mission-stat-label">Years Experience</span>
-            </div>
+            {aboutData.stats.map((stat, index) => (
+              <div key={index} className="about-mission-stat">
+                <span className="about-mission-stat-number">{stat.value}</span>
+                <span className="about-mission-stat-label">{stat.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -118,11 +83,7 @@ const About: React.FC = () => {
           {aboutData.services.map((service, index) => (
             <li
               key={service.id}
-              ref={(el) => {
-                if (el) {
-                  serviceCardsRef.current[index] = el;
-                }
-              }}
+              ref={el => { serviceCardsRef.current[index] = el; }}
               className="about-service-card"
               style={{ '--service-accent-color': service.color } as React.CSSProperties}
             >

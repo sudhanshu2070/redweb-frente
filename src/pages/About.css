@@ -48,7 +48,8 @@
   margin-bottom: 1.5rem;
   line-height: 1.2;
   color: inherit;
-  opacity: 1 ;
+  transform: translateY(0) !important;
+  opacity: 1.25 !important;
 }
 
 .about-hero-highlight {

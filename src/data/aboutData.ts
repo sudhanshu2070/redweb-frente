@@ -74,5 +74,10 @@ export const aboutData = {
         { icon: "fab fa-medium", url: "#" }
       ]
     }
-  ]
+  ],
+  stats: [
+    { value: '10+', label: 'Years of Experience' },
+    { value: '500+', label: 'Projects Delivered' },
+    { value: '300+', label: 'Happy Clients' },
+  ],
 };
