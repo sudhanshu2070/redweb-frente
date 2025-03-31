@@ -1,70 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
-import logo from '../assets/redweb-logo.jpg'; 
+import logo from '../assets/redweb-logo.jpg';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 10;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+
+    document.addEventListener('scroll', handleScroll, { passive: true });
+    return () => document.removeEventListener('scroll', handleScroll);
+  }, [scrolled]);
+
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <nav className="navbar">
-      {/* Brand and Logo */}
-      <div className="navbar-brand">
-        <img src={logo} alt="Logo" className="navbar-logo" />
-        Redweb
-      </div>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <div className="navbar-container">
+        {/* Brand and Logo */}
+        <NavLink to="/" className="navbar-brand" onClick={closeMenu}>
+          <img src={logo} alt="Redweb Logo" className="navbar-logo" />
+          <span className="brand-name">Redweb</span>
+        </NavLink>
 
-      {/* Hamburger Menu for Mobile */}
-      <div
-        className={`hamburger ${isMenuOpen ? 'open' : ''}`}
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        role="button"
-        aria-label="Toggle navigation menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+        {/* Hamburger Menu for Mobile */}
+        <button
+          className={`hamburger ${isMenuOpen ? 'open' : ''}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-expanded={isMenuOpen}
+          aria-label="Toggle navigation"
+        >
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+        </button>
 
-      {/* Links */}
-      <ul className={`navbar-links ${isMenuOpen ? 'active' : ''}`}>
-        <li>
-          <NavLink
-            to="/"
-            className={({ isActive }) => (isActive ? 'active' : '')}
-            onClick={() => setIsMenuOpen(false)} // Close menu after clicking
-          >
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/about"
-            className={({ isActive }) => (isActive ? 'active' : '')}
-            onClick={() => setIsMenuOpen(false)} // Close menu after clicking
-          >
-            About
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/products-services"
-            className={({ isActive }) => (isActive ? 'active' : '')}
-            onClick={() => setIsMenuOpen(false)} // Close menu after clicking
-          >
-            Products & Services
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/contributors"
-            className={({ isActive }) => (isActive ? 'active' : '')}
-            onClick={() => setIsMenuOpen(false)} // Close menu after clicking
-          >
-            Contributors
-          </NavLink>
-        </li>
-      </ul>
+        {/* Navigation Links */}
+        <div className={`navbar-menu ${isMenuOpen ? 'open' : ''}`}>
+          <ul className="navbar-links">
+            {[
+              { path: '/', label: 'Home' },
+              { path: '/about', label: 'About' },
+              { path: '/products-services', label: 'Products & Services' },
+              { path: '/contributors', label: 'Contributors' },
+            ].map((item) => (
+              <li key={item.path}>
+                <NavLink
+                  to={item.path}
+                  className={({ isActive }) => 
+                    `nav-link ${isActive ? 'active' : ''}`
+                  }
+                  onClick={closeMenu}
+                >
+                  {item.label}
+                  <span className="link-underline"></span>
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </nav>
   );
 };
