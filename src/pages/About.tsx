@@ -13,6 +13,8 @@ const About: React.FC = () => {
     setIsVisible(true);
 
     // Set up Intersection Observer for service cards
+    const currentServiceCards = serviceCardsRef.current; 
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
@@ -24,12 +26,12 @@ const About: React.FC = () => {
       { threshold: 0.1 }
     );
 
-    serviceCardsRef.current.forEach(card => {
+    currentServiceCards.forEach(card => {
       if (card) observer.observe(card);
     });
 
     return () => {
-      serviceCardsRef.current.forEach(card => {
+      currentServiceCards.forEach(card => {
         if (card) observer.unobserve(card);
       });
     };

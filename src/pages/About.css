@@ -87,7 +87,7 @@
   background: linear-gradient(to right, #fff, #f8d7d7);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: #fff;
   position: relative;
   display: inline-block;
   padding: 0 0.1em;
