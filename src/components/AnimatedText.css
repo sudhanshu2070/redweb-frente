@@ -1,0 +1,17 @@
+/* Increase the specificity of the selector */
+div.animated-text {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0; /* Set the initial width to 0 */
+  animation: typing 4s steps(40) 1s forwards; /* Adjust the number of steps to match the number of characters */
+}
+
+@keyframes typing {
+  to {
+    width: 100%;
+  }
+}

@@ -41,7 +41,7 @@
   }
 }
 
-.hero h1 {
+.h1-hero {
   font-size: 4rem;
   color: #333;
   margin-bottom: 1rem;
@@ -50,7 +50,7 @@
   opacity: 0; /* Start hidden for animation */
 }
 
-.hero p {
+.p1-hero {
   font-size: 1.5rem;
   color: #666;
   margin-bottom: 2rem;

@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import './Home.css';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import AnimatedText from '../components/AnimatedText';
 
 // Register GSAP ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -54,10 +55,11 @@ const Home: React.FC = () => {
     <div className="home">
       <Navbar />
       <div className="hero" ref={heroRef}>
-        <h1 ref={headingRef}>Welcome to Redweb</h1>
-        <p ref={subheadingRef}>
+        <h1 className="h1-hero" ref={headingRef}>Welcome to Redweb</h1>
+        <p className="p1-hero" ref={subheadingRef}>
           Building cool, user-friendly, responsive websites and mobile apps
         </p>
+        <AnimatedText text="Hello World" />
         <button ref={buttonRef} className="cta-button">
           Get Started
         </button>
