@@ -61,9 +61,9 @@ const Home: React.FC = () => {
         </p>
         <AnimatedText 
           text="Creation beyond Imagination" 
-          typingSpeed={150} 
-          loopDelay={1200}
-          cursorBlinkSpeed={600}
+          textStyle="gradient" 
+          cursorStyle="line"
+          size="lg"
         />
         <button ref={buttonRef} className="cta-button">
           Get Started

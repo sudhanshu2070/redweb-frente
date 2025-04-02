@@ -6,13 +6,19 @@ interface AnimatedTextProps {
   typingSpeed?: number;
   loopDelay?: number;
   cursorBlinkSpeed?: number;
+  textStyle?: 'gradient' | 'solid' | 'outline';
+  cursorStyle?: 'block' | 'line' | 'underscore';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
 }
 
 const AnimatedText: React.FC<AnimatedTextProps> = ({
   text,
   typingSpeed = 100,
   loopDelay = 1000,
-  cursorBlinkSpeed = 500
+  cursorBlinkSpeed = 500,
+  textStyle = 'gradient',
+  cursorStyle = 'block',
+  size = 'md'
 }) => {
   const [displayText, setDisplayText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
@@ -39,7 +45,6 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
         currentIndex++;
         timeoutId = setTimeout(typeText, typingSpeed);
       } else {
-        // Start deleting after a delay
         setIsTyping(false);
         timeoutId = setTimeout(deleteText, loopDelay);
       }
@@ -49,15 +54,13 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
       if (currentIndex > 0) {
         setDisplayText(text.substring(0, currentIndex - 1));
         currentIndex--;
-        timeoutId = setTimeout(deleteText, typingSpeed / 2); // Faster deletion
+        timeoutId = setTimeout(deleteText, typingSpeed / 2);
       } else {
-        // Start typing again after a delay
         setIsTyping(true);
         timeoutId = setTimeout(typeText, loopDelay / 2);
       }
     };
 
-    // Start the animation
     typeText();
 
     return () => {
@@ -69,10 +72,10 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
   }, [text, typingSpeed, loopDelay]);
 
   return (
-    <div className="animated-text-container">
-      <h1 className="animated-text">
+    <div className={`animated-text-container ${size}`}>
+      <h1 className={`animated-text ${textStyle}`}>
         {displayText}
-        <span className={`cursor ${showCursor ? 'visible' : ''}`}>|</span>
+        <span className={`cursor ${cursorStyle} ${showCursor ? 'visible' : ''}`}></span>
       </h1>
     </div>
   );
