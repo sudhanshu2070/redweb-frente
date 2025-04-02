@@ -1,17 +1,45 @@
-/* Increase the specificity of the selector */
-div.animated-text {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #333;
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0; /* Set the initial width to 0 */
-  animation: typing 4s steps(40) 1s forwards; /* Adjust the number of steps to match the number of characters */
+:root {
+  --text-color: #2d3748;
+  --cursor-color: #4f46e5;
 }
 
-@keyframes typing {
-  to {
-    width: 100%;
+.animated-text-container {
+  display: inline-block;
+}
+
+.animated-text {
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0;
+  display: inline-block;
+  position: relative;
+}
+
+.cursor {
+  color: var(--cursor-color);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.cursor.visible {
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .animated-text {
+    font-size: clamp(1.25rem, 6vw, 2rem);
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animated-text {
+    animation: none !important;
+  }
+  .cursor {
+    display: none !important;
   }
 }

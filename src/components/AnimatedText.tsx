@@ -1,37 +1,78 @@
-import React, { useEffect, useRef } from 'react';
-import './AnimatedText.css'; // Importing the CSS for animations
+import React, { useEffect, useRef, useState } from 'react';
+import './AnimatedText.css';
 
-// Prop types
 interface AnimatedTextProps {
-  text: string; // 'text' should be a string
+  text: string;
+  typingSpeed?: number;
+  loopDelay?: number;
+  cursorBlinkSpeed?: number;
 }
 
-const AnimatedText: React.FC<AnimatedTextProps> = ({ text }) => {
-  const textRef = useRef<HTMLHeadingElement | null>(null);
+const AnimatedText: React.FC<AnimatedTextProps> = ({
+  text,
+  typingSpeed = 100,
+  loopDelay = 1000,
+  cursorBlinkSpeed = 500
+}) => {
+  const [displayText, setDisplayText] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
+  const [showCursor, setShowCursor] = useState(true);
+  const animationRef = useRef<number | null>(null);
 
+  // Handle cursor blinking
   useEffect(() => {
-    if (textRef.current) {
-      const displayText = text || ''; // Ensure text exists
-      textRef.current.innerHTML = ''; // Clear the initial text
+    const cursorInterval = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, cursorBlinkSpeed);
 
-      let index = 0;
-      const intervalId = setInterval(() => {
-        if (index < displayText.length) {
-          if (textRef.current) {
-            textRef.current.textContent += displayText[index];
-          }
-          index++;
-        } else {
-          clearInterval(intervalId); // Stop once the entire text is shown
-        }
-      }, 100); // Adjust the speed here (in ms)
-    }
-  }, [text]); // Run this effect again if the `text` prop changes
+    return () => clearInterval(cursorInterval);
+  }, [cursorBlinkSpeed]);
+
+  // Handle typing animation
+  useEffect(() => {
+    let currentIndex = 0;
+    let timeoutId: NodeJS.Timeout;
+
+    const typeText = () => {
+      if (currentIndex < text.length) {
+        setDisplayText(text.substring(0, currentIndex + 1));
+        currentIndex++;
+        timeoutId = setTimeout(typeText, typingSpeed);
+      } else {
+        // Start deleting after a delay
+        setIsTyping(false);
+        timeoutId = setTimeout(deleteText, loopDelay);
+      }
+    };
+
+    const deleteText = () => {
+      if (currentIndex > 0) {
+        setDisplayText(text.substring(0, currentIndex - 1));
+        currentIndex--;
+        timeoutId = setTimeout(deleteText, typingSpeed / 2); // Faster deletion
+      } else {
+        // Start typing again after a delay
+        setIsTyping(true);
+        timeoutId = setTimeout(typeText, loopDelay / 2);
+      }
+    };
+
+    // Start the animation
+    typeText();
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [text, typingSpeed, loopDelay]);
 
   return (
-    <div className="animated-text">
-      <h1 ref={textRef}>
-        {text} {/* Optionally display text immediately before animation starts */}
+    <div className="animated-text-container">
+      <h1 className="animated-text">
+        {displayText}
+        <span className={`cursor ${showCursor ? 'visible' : ''}`}>|</span>
       </h1>
     </div>
   );

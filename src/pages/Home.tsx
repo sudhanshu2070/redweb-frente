@@ -59,7 +59,12 @@ const Home: React.FC = () => {
         <p className="p1-hero" ref={subheadingRef}>
           Building cool, user-friendly, responsive websites and mobile apps
         </p>
-        <AnimatedText text="Hello World" />
+        <AnimatedText 
+          text="Creation beyond Imagination" 
+          typingSpeed={150} 
+          loopDelay={1200}
+          cursorBlinkSpeed={600}
+        />
         <button ref={buttonRef} className="cta-button">
           Get Started
         </button>
