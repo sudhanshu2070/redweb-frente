@@ -18,7 +18,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ text }) => {
       const intervalId = setInterval(() => {
         if (index < displayText.length) {
           if (textRef.current) {
-            textRef.current.innerHTML += displayText[index];
+            textRef.current.textContent += displayText[index];
           }
           index++;
         } else {
