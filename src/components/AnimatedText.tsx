@@ -21,9 +21,11 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
   size = 'md'
 }) => {
   const [displayText, setDisplayText] = useState('');
-  const [isTyping, setIsTyping] = useState(true);
   const [showCursor, setShowCursor] = useState(true);
-  const animationRef = useRef<number | null>(null);
+  const animationRef = useRef<{
+    timeoutId?: NodeJS.Timeout;
+    frameId?: number;
+  }>({ timeoutId: undefined, frameId: undefined });
 
   // Handle cursor blinking
   useEffect(() => {
@@ -37,36 +39,44 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
   // Handle typing animation
   useEffect(() => {
     let currentIndex = 0;
-    let timeoutId: NodeJS.Timeout;
+    const animationState = { isRunning: true };
 
     const typeText = () => {
+      if (!animationState.isRunning) return;
+
       if (currentIndex < text.length) {
         setDisplayText(text.substring(0, currentIndex + 1));
         currentIndex++;
-        timeoutId = setTimeout(typeText, typingSpeed);
+        animationRef.current.timeoutId = setTimeout(typeText, typingSpeed);
       } else {
-        setIsTyping(false);
-        timeoutId = setTimeout(deleteText, loopDelay);
+        animationRef.current.timeoutId = setTimeout(deleteText, loopDelay);
       }
     };
 
     const deleteText = () => {
+      if (!animationState.isRunning) return;
+
       if (currentIndex > 0) {
         setDisplayText(text.substring(0, currentIndex - 1));
         currentIndex--;
-        timeoutId = setTimeout(deleteText, typingSpeed / 2);
+        animationRef.current.timeoutId = setTimeout(deleteText, typingSpeed / 2);
       } else {
-        setIsTyping(true);
-        timeoutId = setTimeout(typeText, loopDelay / 2);
+        animationRef.current.timeoutId = setTimeout(typeText, loopDelay / 2);
       }
     };
 
     typeText();
 
+    // Storing the current ref value locally
+    const currentAnimationRef = animationRef.current;
+
     return () => {
-      clearTimeout(timeoutId);
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
+      animationState.isRunning = false;
+      if (currentAnimationRef.timeoutId) {
+        clearTimeout(currentAnimationRef.timeoutId);
+      }
+      if (currentAnimationRef.frameId) {
+        cancelAnimationFrame(currentAnimationRef.frameId);
       }
     };
   }, [text, typingSpeed, loopDelay]);
