@@ -101,6 +101,8 @@
     align-items: center;
     cursor: pointer;
     padding: 1.25rem 1.5rem;
+    gap: 1rem;
+    flex-wrap: nowrap;
   }
   
   .question-number {
@@ -108,31 +110,28 @@
     font-weight: 600;
     color: #ff4d4d;
     margin-right: 1rem;
+    flex-shrink: 0;
   }
   
   .redweb-qanda-question h3 {
-    flex: 1;
     font-size: 1.125rem;
     margin: 0;
+    color: #fff;
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
   .redweb-qanda-toggle {
     font-size: 1.75rem;
     font-weight: bold;
     color: #ff4d4d;
-    margin-left: auto;
-    transition: color 0.3s ease;
-  }
-  
-  .toggle-line {
-    width: 18px;
-    height: 2px;
-    background-color: #fff;
-    transition: transform 0.3s ease;
-  }
-  
-  .toggle-line.rotated {
-    transform: rotate(90deg);
+    margin-left: 1rem;
+    flex-shrink: 0;
+    text-align: center;
+    min-width: 24px;
   }
   
   /* Answer */
@@ -182,12 +181,23 @@
   /* Responsive */
   @media (max-width: 768px) {
     .redweb-qanda-question {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+    }
+  
+    .redweb-qanda-question h3 {
+      font-size: 1rem;
+      white-space: normal;
     }
   
     .redweb-qanda-toggle {
-      align-self: flex-end;
+      font-size: 1.5rem;
+    }
+  
+    .question-number {
+      font-size: 1rem;
     }
   }
+  
