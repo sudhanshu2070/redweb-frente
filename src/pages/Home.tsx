@@ -4,6 +4,7 @@ import './Home.css';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import AnimatedText from '../components/AnimatedText';
+import QandA from '../components/QnA/QandA';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -97,6 +98,7 @@ const Home: React.FC = () => {
           <span className="button-icon">→</span>
         </button>
       </div>
+      <QandA/>
     </div>
   );
 };

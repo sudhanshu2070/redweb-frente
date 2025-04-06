@@ -1,5 +1,5 @@
-import React from 'react';
-import './QandA.css'; // We'll create this CSS file next
+import React, { useState } from 'react';
+import './QandA.css';
 
 interface QandAItem {
   question: string;
@@ -7,6 +7,8 @@ interface QandAItem {
 }
 
 const QandA: React.FC = () => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
   const qaData: QandAItem[] = [
     {
       question: "What services does Redweb offer?",
@@ -26,6 +28,10 @@ const QandA: React.FC = () => {
     }
   ];
 
+  const toggleAccordion = (index: number) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
+
   return (
     <section className="redweb-qanda-section">
       <div className="redweb-qanda-container">
@@ -35,15 +41,22 @@ const QandA: React.FC = () => {
         </h2>
         <p className="redweb-qanda-subheading">Everything you need to know about working with us</p>
         
-        <div className="redweb-qanda-grid">
+        <div className="redweb-qanda-accordion">
           {qaData.map((item, index) => (
-            <div key={index} className="redweb-qanda-card">
-              <div className="redweb-qanda-question">
-                <span className="redweb-qanda-icon">Q</span>
+            <div 
+              key={index} 
+              className={`redweb-qanda-item ${activeIndex === index ? 'active' : ''}`}
+            >
+              <div 
+                className="redweb-qanda-question"
+                onClick={() => toggleAccordion(index)}
+              >
                 <h3>{item.question}</h3>
+                <span className="redweb-qanda-toggle">
+                  {activeIndex === index ? '−' : '+'}
+                </span>
               </div>
               <div className="redweb-qanda-answer">
-                <span className="redweb-qanda-icon">A</span>
                 <p>{item.answer}</p>
               </div>
             </div>

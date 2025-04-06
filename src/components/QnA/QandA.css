@@ -36,56 +36,75 @@
     color: #aaa;
   }
   
-  .redweb-qanda-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+  .redweb-qanda-accordion {
+    max-width: 800px;
+    margin: 0 auto;
   }
   
-  .redweb-qanda-card {
-    background: rgba(30, 30, 30, 0.7);
-    border-radius: 16px;
-    padding: 2rem;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  .redweb-qanda-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
   }
   
-  .redweb-qanda-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(255, 77, 77, 0.1);
+  .redweb-qanda-item.active {
+    border-bottom-color: rgba(255, 77, 77, 0.3);
   }
   
   .redweb-qanda-question {
-    margin-bottom: 1.5rem;
+    padding: 1.5rem 0;
     display: flex;
-    align-items: flex-start;
-    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .redweb-qanda-question:hover {
+    color: #ff4d4d;
+  }
+  
+  .redweb-qanda-question h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+    flex: 1;
+  }
+  
+  .redweb-qanda-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 77, 77, 0.2);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .redweb-qanda-item.active .redweb-qanda-toggle {
+    background: #ff4d4d;
+    color: #fff;
+    transform: rotate(180deg);
   }
   
   .redweb-qanda-answer {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
   }
   
-  .redweb-qanda-icon {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ff4d4d;
-    min-width: 1.5rem;
+  .redweb-qanda-item.active .redweb-qanda-answer {
+    max-height: 300px;
+    padding-bottom: 1.5rem;
   }
   
-  .redweb-qanda-card h3 {
-    font-size: 1.25rem;
-    margin: 0;
-    color: #fff;
-  }
-  
-  .redweb-qanda-card p {
+  .redweb-qanda-answer p {
     margin: 0;
     color: #ccc;
     line-height: 1.6;
+    padding-right: 2rem;
   }
   
   /* Responsive adjustments */
@@ -94,12 +113,13 @@
       padding: 3rem 1.5rem;
     }
     
-    .redweb-qanda-grid {
-      grid-template-columns: 1fr;
+    .redweb-qanda-question h3 {
+      font-size: 1.1rem;
+      padding-right: 1rem;
     }
     
-    .redweb-qanda-card {
-      padding: 1.5rem;
+    .redweb-qanda-answer p {
+      padding-right: 0;
     }
   }
   
