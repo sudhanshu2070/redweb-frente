@@ -29,35 +29,50 @@ const QandA: React.FC = () => {
   ];
 
   const toggleAccordion = (index: number) => {
-    setActiveIndex(activeIndex === index ? null : index);
+    setActiveIndex(prevIndex => (prevIndex === index ? null : index));
   };
 
   return (
     <section className="redweb-qanda-section">
       <div className="redweb-qanda-container">
-        <h2 className="redweb-qanda-heading">
-          <span className="redweb-qanda-heading-accent">Q</span>uestions & 
-          <span className="redweb-qanda-heading-accent"> A</span>nswers
-        </h2>
-        <p className="redweb-qanda-subheading">Everything you need to know about working with us</p>
-        
+        <div className="redweb-qanda-header">
+          <h2 className="redweb-qanda-heading">
+            <span className="redweb-qanda-heading-accent">Q</span>uestions & 
+            <span className="redweb-qanda-heading-accent"> A</span>nswers
+          </h2>
+          <p className="redweb-qanda-subheading">Everything you need to know about working with us</p>
+          <div className="redweb-qanda-decoration">
+            <div className="decoration-line"></div>
+            <div className="decoration-dot"></div>
+            <div className="decoration-line"></div>
+          </div>
+        </div>
+
         <div className="redweb-qanda-accordion">
           {qaData.map((item, index) => (
             <div 
-              key={index} 
+              key={index}
               className={`redweb-qanda-item ${activeIndex === index ? 'active' : ''}`}
             >
               <div 
                 className="redweb-qanda-question"
                 onClick={() => toggleAccordion(index)}
               >
+                <div className="question-number">0{index + 1}</div>
                 <h3>{item.question}</h3>
-                <span className="redweb-qanda-toggle">
-                  {activeIndex === index ? '−' : '+'}
-                </span>
+                <div className="redweb-qanda-toggle">
+                  <div className="toggle-line"></div>
+                  <div className={`toggle-line ${activeIndex === index ? 'rotated' : ''}`}></div>
+                </div>
               </div>
               <div className="redweb-qanda-answer">
-                <p>{item.answer}</p>
+                <div className="answer-content">
+                  <p>{item.answer}</p>
+                  <button className="contact-button">
+                    Contact Us About This
+                    <span className="arrow-icon">→</span>
+                  </button>
+                </div>
               </div>
             </div>
           ))}

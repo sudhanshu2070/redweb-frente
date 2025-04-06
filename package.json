@@ -15,7 +15,6 @@
     "ajv": "6.12.6",
     "ajv-keywords": "3.5.2",
     "framer-motion": "^12.6.2",
-    "gsap": "^3.12.7",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^4.7.1",

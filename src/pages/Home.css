@@ -1,119 +1,87 @@
 /* Base Styles */
-.home {
-  min-height: 100vh;
-  background: #0f172a; /* Dark blue background */
-  color: #ffffff;
-  margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+.redweb-home {
+  position: relative;
+  color: #fff;
+  background: linear-gradient(to bottom, #0a0a0a, #111);
 }
 
 /* Hero Section */
-.hero {
+.redweb-home__hero {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   text-align: center;
   padding: 0 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
-/* Typography */
-.hero-heading {
+/* Hero Heading */
+.redweb-home__heading {
   font-size: clamp(2.5rem, 8vw, 4.5rem);
-  font-weight: 800;
   margin-bottom: 1.5rem;
-  line-height: 1.2;
-  color: white;
 }
 
-.brand {
-  color: #ff3a3a; /* Redweb brand color */
-  position: relative;
-}
-
-.brand::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: #ff3a3a;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s ease;
-}
-
-.hero-heading:hover .brand::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
-
-.hero-subheading {
-  font-size: clamp(1.1rem, 3vw, 1.5rem);
-  max-width: 700px;
-  margin: 0 auto 3rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.highlight {
-  color: #4e54c8; /* Complementary blue */
-  font-weight: 600;
+/* Hero Subheading */
+.redweb-home__subheading {
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  color: #aaa;
+  margin-bottom: 2.5rem;
 }
 
 /* CTA Button */
-.cta-button {
-  background: #ff3a3a;
-  color: white;
-  font-size: 1.2rem;
-  padding: 1rem 2.5rem;
-  border: none;
+.redweb-home__cta-button {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #ff4d4d;
+  padding: 0.75rem 2rem;
   border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 2rem;
-  transform: none !important;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.cta-button:hover {
-  background: #e03131;
+.redweb-home__cta-button:hover {
+  background: rgba(255, 77, 77, 0.1);
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(255, 58, 58, 0.3);
 }
 
-.button-icon {
-  transition: transform 0.3s ease;
+/* Brand & Highlight */
+.redweb-home__brand {
+  color: #ff4d4d;
 }
 
-.cta-button:hover .button-icon {
-  transform: translateX(5px);
+.redweb-home__highlight {
+  color: #fff;
+  font-weight: 500;
 }
 
-/* Responsive Design */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-  .hero {
+  .redweb-home__hero {
     padding: 0 1.5rem;
   }
-  
-  .cta-button {
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
+
+  .redweb-home__heading {
+    margin-bottom: 1rem;
+  }
+
+  .redweb-home__subheading {
+    margin-bottom: 2rem;
+  }
+
+  .redweb-home__cta-button {
+    padding: 0.6rem 1.5rem;
   }
 }
 
-@media (max-width: 480px) {
-  .hero {
-    padding: 0 1rem;
-  }
-  
-  .cta-button {
-    padding: 0.7rem 1.5rem;
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .redweb-home__cta-button {
+    transition: none !important;
   }
 }
