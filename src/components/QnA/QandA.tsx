@@ -61,8 +61,7 @@ const QandA: React.FC = () => {
                 <div className="question-number">0{index + 1}</div>
                 <h3>{item.question}</h3>
                 <div className="redweb-qanda-toggle">
-                  <div className="toggle-line"></div>
-                  <div className={`toggle-line ${activeIndex === index ? 'rotated' : ''}`}></div>
+                    {activeIndex === index ? '−' : '+'}
                 </div>
               </div>
               <div className="redweb-qanda-answer">
