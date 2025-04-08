@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import './Home.css';
 import AnimatedText from '../components/AnimatedText';
 import QandA from '../components/QnA/QandA';
+import ContactModal from '../components/SmartContactForm/ContactModal';
 
 const Home: React.FC = () => {
   return (
@@ -35,7 +36,11 @@ const Home: React.FC = () => {
       <section className="redweb-home__qanda">
         <QandA />
       </section>
-    </div>
+        <section className="cta-section">
+          <h2>Ready to get started?</h2>
+          <ContactModal />
+        </section>
+          </div>
   );
 };
 

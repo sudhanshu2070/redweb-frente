@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import './SmartContactForm.css';
 
-const SmartContactForm = () => {
+interface SmartContactFormProps {
+    defaultService?: string;
+    onSuccess?: () => void;
+  }
+  
+const SmartContactForm: React.FC<SmartContactFormProps> = ({ 
+    defaultService = '', 
+    onSuccess 
+  }) => {
+
   const [formData, setFormData] = useState({
     service: '',
     name: '',
