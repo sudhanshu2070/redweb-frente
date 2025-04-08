@@ -42,7 +42,7 @@ const Home: React.FC = () => {
       <section className="cta-section">
         <h2>Ready to get started?</h2>
         
-        {/* This button will trigger the modal */}
+        {/* button to trigger the modal */}
         <button 
           className="cta-button"
           onClick={() => setIsModalOpen(true)}
