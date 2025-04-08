@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../assets/redweb-logo.jpg';
+import ContactModal from './SmartContactForm/ContactModal';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showContactModal, setShowContactModal] = useState(false); // Add modal state
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,9 +66,35 @@ const Navbar: React.FC = () => {
                 </NavLink>
               </li>
             ))}
+            
+            {/* Mobile Contact Button */}
+            <li className="mobile-contact-item">
+              <button 
+                onClick={() => {
+                  setShowContactModal(true);
+                  closeMenu();
+                }}
+                className="contact-button-mobile"
+              >
+                Get a Quote
+              </button>
+            </li>
           </ul>
+
+          {/* Desktop Contact Button */}
+          <button 
+            onClick={() => setShowContactModal(true)}
+            className="contact-button-desktop"
+          >
+            Get a Quote
+          </button>
         </div>
       </div>
+
+      {/* Contact Modal */}
+      {showContactModal && (
+        <ContactModal onClose={() => setShowContactModal(false)} />
+      )}
     </nav>
   );
 };

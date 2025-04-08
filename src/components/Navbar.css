@@ -227,3 +227,53 @@
     }
   }
 }
+
+/* Contact Button Styles */
+.contact-button-desktop {
+  background: linear-gradient(135deg, #ff4d4d, #cc2b2b);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
+  margin-left: 1.5rem;
+  white-space: nowrap;
+}
+
+.contact-button-mobile {
+  display: none;
+  background: linear-gradient(135deg, #ff4d4d, #cc2b2b);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.mobile-contact-item {
+  display: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .contact-button-desktop {
+    display: none;
+  }
+  
+  .mobile-contact-item {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+  }
+  
+  .contact-button-mobile {
+    display: block;
+  }
+}

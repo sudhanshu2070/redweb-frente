@@ -5,7 +5,7 @@ interface SmartContactFormProps {
     defaultService?: string;
     onSuccess?: () => void;
   }
-  
+
 const SmartContactForm: React.FC<SmartContactFormProps> = ({ 
     defaultService = '', 
     onSuccess 

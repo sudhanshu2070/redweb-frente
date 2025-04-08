@@ -3,7 +3,8 @@ import SmartContactForm from './SmartContactForm';
 import './ContactModal.css';
 
 interface ContactModalProps {
-  defaultService?: string;
+    defaultService?: string;
+    onClose: () => void; 
 }
 
 const ContactModal: React.FC<ContactModalProps> = ({ defaultService = '' }) => {

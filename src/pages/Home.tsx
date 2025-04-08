@@ -38,7 +38,7 @@ const Home: React.FC = () => {
       </section>
         <section className="cta-section">
           <h2>Ready to get started?</h2>
-          <ContactModal />
+          <ContactModal  onClose={() => console.log('Contact modal closed')} />
         </section>
           </div>
   );
