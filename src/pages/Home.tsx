@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import './Home.css';
 import AnimatedText from '../components/AnimatedText';
@@ -6,6 +6,8 @@ import QandA from '../components/QnA/QandA';
 import ContactModal from '../components/SmartContactForm/ContactModal';
 
 const Home: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <div className="redweb-home">
       <Navbar />
@@ -36,14 +38,26 @@ const Home: React.FC = () => {
       <section className="redweb-home__qanda">
         <QandA />
       </section>
-        <section className="cta-section">
-          <h2>Ready to get started?</h2>
-          <ContactModal  
-            isOpen={false}
-            defaultService="Web Development"
-            onClose={() => console.log('Contact modal closed')} />
-        </section>
-          </div>
+      
+      <section className="cta-section">
+        <h2>Ready to get started?</h2>
+        
+        {/* This button will trigger the modal */}
+        <button 
+          className="cta-button"
+          onClick={() => setIsModalOpen(true)}
+        >
+          Get a Free Quote
+        </button>
+
+        {/* The modal component */}
+        <ContactModal  
+          isOpen={isModalOpen}
+          defaultService="Web Development"
+          onClose={() => setIsModalOpen(false)}
+        />
+      </section>
+    </div>
   );
 };
 

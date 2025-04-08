@@ -120,3 +120,35 @@
     transition: none !important;
   }
 }
+
+/* CTA Section Styles */
+.cta-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #0f0f13 0%, #1a1a24 100%);
+  border-top: 1px solid rgba(255, 77, 77, 0.1);
+}
+
+.cta-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+.cta-button {
+  background: linear-gradient(135deg, #ff4d4d, #cc2b2b);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 77, 77, 0.4);
+}
