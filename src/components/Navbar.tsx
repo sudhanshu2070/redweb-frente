@@ -93,7 +93,9 @@ const Navbar: React.FC = () => {
 
       {/* Contact Modal */}
       {showContactModal && (
-        <ContactModal onClose={() => setShowContactModal(false)} />
+        <ContactModal 
+        isOpen={showContactModal}  
+        onClose={() => setShowContactModal(false)} />
       )}
     </nav>
   );

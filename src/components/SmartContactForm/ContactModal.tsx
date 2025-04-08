@@ -1,43 +1,37 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SmartContactForm from './SmartContactForm';
 import './ContactModal.css';
 
 interface ContactModalProps {
-    defaultService?: string;
-    onClose: () => void; 
+  isOpen: boolean;
+  onClose: () => void;
+  defaultService?: string;
 }
 
-const ContactModal: React.FC<ContactModalProps> = ({ defaultService = '' }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const ContactModal: React.FC<ContactModalProps> = ({ 
+  isOpen, 
+  onClose, 
+  defaultService = '' 
+}) => {
+    // Close the modal when the user clicks outside of it
+  if (!isOpen) return null;
 
   return (
-    <>
-      {/* Trigger Button - Can be placed anywhere */}
-      <button 
-        className="quote-button" 
-        onClick={() => setIsOpen(true)}
-      >
-        Get a Quote
-      </button>
-
-      {/* Modal Overlay */}
-      {isOpen && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <button 
-              className="modal-close" 
-              onClick={() => setIsOpen(false)}
-            >
-              &times;
-            </button>
-            <SmartContactForm 
-              defaultService={defaultService} 
-              onSuccess={() => setIsOpen(false)} 
-            />
-          </div>
-        </div>
-      )}
-    </>
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={e => e.stopPropagation()}>
+        <button 
+          className="modal-close" 
+          onClick={onClose}
+          aria-label="Close contact form"
+        >
+          &times;
+        </button>
+        <SmartContactForm 
+          defaultService={defaultService} 
+          onSuccess={onClose} 
+        />
+      </div>
+    </div>
   );
 };
 

@@ -38,7 +38,10 @@ const Home: React.FC = () => {
       </section>
         <section className="cta-section">
           <h2>Ready to get started?</h2>
-          <ContactModal  onClose={() => console.log('Contact modal closed')} />
+          <ContactModal  
+            isOpen={false}
+            defaultService="Web Development"
+            onClose={() => console.log('Contact modal closed')} />
         </section>
           </div>
   );
