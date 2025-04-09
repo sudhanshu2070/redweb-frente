@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-java';
 import 'ace-builds/src-noconflict/theme-monokai'; // You can choose a different theme
@@ -10,7 +10,7 @@ const JavaSeleniumTest: React.FC = () => {
   const [isRunning, setIsRunning] = useState<boolean>(false); // Flag indicating if the test is running
   const [textboxPosition, setTextboxPosition] = useState<{ x: number, y: number }>({ x: 0, y: 0 });
 
-  const editorRef = useRef<any>(null);
+//   const editorRef = useRef<any>(null);
 
   // Handle the submission of the Java code
   const handleSubmit = async () => {

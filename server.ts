@@ -3,9 +3,13 @@ import bodyParser from 'body-parser';
 import fs from 'fs';
 import path from 'path';
 import { exec } from 'child_process';
+import cors from 'cors';  // Import the cors module
 
 const app = express();
 const port = 8080;
+
+// Use the cors middleware
+app.use(cors());  // This will allow requests from any origin. You can configure it more specifically if needed.
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
