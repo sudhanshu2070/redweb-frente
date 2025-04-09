@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import ProductsServices from './pages/ProductsServices';
 import Contributors from './pages/Contributors';
+import JavaSeleniumTest from './components/JavaSeleniumTest/JavaSeleniumTest';
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
         <Route path="/about" element={<About />} />
         <Route path="/products-services" element={<ProductsServices />} />
         <Route path="/contributors" element={<Contributors />} />
+        <Route path="/javaSele" element={<JavaSeleniumTest />} />
       </Routes>
     </Router>
   );

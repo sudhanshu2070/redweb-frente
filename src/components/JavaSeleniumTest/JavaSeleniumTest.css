@@ -1,0 +1,44 @@
+/* JavaSeleniumTest.css */
+.java-selenium-test-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .java-selenium-test-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .java-selenium-editor {
+    width: 100%;
+    max-width: 1000px;
+    height: 400px;
+    margin-bottom: 20px;
+  }
+  
+  .java-selenium-test-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .java-selenium-test-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .java-selenium-output-container {
+    width: 100%;
+    max-width: 1000px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
