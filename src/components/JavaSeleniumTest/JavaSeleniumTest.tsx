@@ -25,6 +25,12 @@ const JavaSeleniumTest: React.FC = () => {
         body: JSON.stringify({ javaCode, position: textboxPosition }),
       });
 
+          // Check if response is ok and parse JSON
+        if (!response.ok) {
+            const errorText = await response.text(); // Get plain text if JSON fails
+            throw new Error(`Server error: ${errorText}`);
+        }
+
       const data = await response.json();
       setResult(data.output || data.message); // Display the result or error message
     } catch (error) {
