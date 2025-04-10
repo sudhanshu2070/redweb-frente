@@ -5,6 +5,7 @@ import About from './pages/About';
 import ProductsServices from './pages/ProductsServices';
 import Contributors from './pages/Contributors';
 import JavaIDE from './components/JavaIDE/JavaIDE';
+import PythonIDE from './components/PythonIDE/PythonIDE';
 
 const App: React.FC = () => {
   return (
@@ -14,7 +15,8 @@ const App: React.FC = () => {
         <Route path="/about" element={<About />} />
         <Route path="/products-services" element={<ProductsServices />} />
         <Route path="/contributors" element={<Contributors />} />
-        <Route path="/javaSele" element={<JavaIDE />} />
+        <Route path="/javaIDE" element={<JavaIDE />} />
+        <Route path="/pythonIDE" element={<PythonIDE />} />
       </Routes>
     </Router>
   );
