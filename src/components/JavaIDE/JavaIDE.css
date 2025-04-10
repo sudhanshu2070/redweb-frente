@@ -1,44 +1,240 @@
-/* JavaSeleniumTest.css */
-.java-selenium-test-container {
-    display: flex;
+/* Base Styles */
+:root {
+  --primary: #6272a4;
+  --secondary: #44475a;
+  --background: #282a36;
+  --text: #f8f8f2;
+  --accent: #ff79c6;
+  --success: #50fa7b;
+  --error: #ff5555;
+  --warning: #f1fa8c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Fira Code', 'Consolas', monospace;
+}
+
+body {
+  background-color: #1e1f29;
+}
+
+/* Main Container */
+.java-ide-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--background);
+  color: var(--text);
+  overflow: hidden;
+}
+
+/* Header Styles */
+.ide-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: rgba(40, 42, 54, 0.9);
+  border-bottom: 1px solid var(--secondary);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.ide-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.title-icon {
+  margin-right: 8px;
+}
+
+.file-info {
+  font-size: 0.9rem;
+  color: var(--primary);
+  padding: 4px 8px;
+  background-color: rgba(98, 114, 164, 0.2);
+  border-radius: 4px;
+}
+
+/* Run Button */
+.run-button {
+  padding: 8px 16px;
+  background-color: var(--success);
+  color: #282a36;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.run-button:hover:not(:disabled) {
+  background-color: #3ae168;
+  transform: translateY(-1px);
+}
+
+.run-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.run-button.running {
+  background-color: var(--warning);
+  color: #282a36;
+}
+
+.play-icon {
+  font-size: 1.1rem;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  border-top-color: #282a36;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Body Layout */
+.ide-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.editor-container {
+  flex: 1;
+  padding: 10px;
+  position: relative;
+}
+
+/* Ace Editor Customization */
+.ace-dracula {
+  background-color: #282a36 !important;
+}
+
+.ace_gutter {
+  background-color: #282a36 !important;
+  color: #6272a4 !important;
+}
+
+.ace_gutter-active-line {
+  background-color: rgba(99, 114, 164, 0.2) !important;
+}
+
+/* Output Panel */
+.output-container {
+  width: 40%;
+  background-color: #21222c;
+  border-left: 1px solid var(--secondary);
+  display: flex;
+  flex-direction: column;
+}
+
+.output-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--secondary);
+}
+
+.tab-button {
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
+}
+
+.tab-button.active {
+  color: var(--text);
+}
+
+.tab-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--accent);
+}
+
+.output-content {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.output-result {
+  white-space: pre-wrap;
+  font-family: monospace;
+  color: var(--text);
+  line-height: 1.5;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.output-result.show {
+  opacity: 1;
+}
+
+.console-view {
+  color: var(--primary);
+  font-family: monospace;
+  line-height: 1.5;
+}
+
+.console-line {
+  margin-bottom: 5px;
+}
+
+/* Footer Styles */
+.ide-footer {
+  background-color: rgba(40, 42, 54, 0.9);
+  border-top: 1px solid var(--secondary);
+  padding: 5px 15px;
+}
+
+.status-bar {
+  display: flex;
+  gap: 15px;
+  font-size: 0.8rem;
+  color: var(--primary);
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ide-body {
     flex-direction: column;
-    align-items: center;
-    padding: 20px;
   }
   
-  .java-selenium-test-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .java-selenium-editor {
+  .output-container {
     width: 100%;
-    max-width: 1000px;
-    height: 400px;
-    margin-bottom: 20px;
+    height: 30%;
   }
-  
-  .java-selenium-test-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .java-selenium-test-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  .java-selenium-output-container {
-    width: 100%;
-    max-width: 1000px;
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-radius: 5px;
-    margin-top: 20px;
-  }
+}
