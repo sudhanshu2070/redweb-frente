@@ -30,14 +30,27 @@ const PythonIDE: React.FC = () => {
       </div>
       
       <div className="ide-content">
-        <iframe
+        {/* <iframe
           ref={iframeRef}
           src="https://codesandbox.io/p/devbox/q9f92t?embed=1&file=%2Fmain.py&showConsole=true"
           title="Python IDE"
           className="codesandbox-iframe"
           allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
           sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-        />
+        /> */}
+
+        <iframe 
+            ref={iframeRef}
+            src="https://codesandbox.io/p/devbox/selethon-forked-kndghs?workspaceId=ws_3x1wDg84fArUiVfwbHXq92&embed=1&file=%2Fmain.py"
+            title="Selethon (forked)"
+            // style={{ width: '100%', height: '500px', border: '0', borderRadius: '4px', overflow: 'hidden' }}
+            className="codesandbox-iframe"
+            allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+            sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+        >
+
+        </iframe>
+        
       </div>
       
       <div className="ide-footer">
