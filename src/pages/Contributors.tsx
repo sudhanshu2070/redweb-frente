@@ -8,9 +8,9 @@ const Contributors: React.FC = () => {
 
   const contributors = [
     {
-      name: "Mark Zuckerberg",
+      name: "Alica Keys",
       role: "Lead Developer",
-      avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+      avatar: "https://cdn.prod.website-files.com/5e51c674258ffe10d286d30a/5e53517fc6b2492d63287d6d_peep-11.png",
       social: {
         twitter: "#",
         linkedin: "#",
@@ -20,7 +20,7 @@ const Contributors: React.FC = () => {
     {
       name: "Lucifer Morningstar",
       role: "VP of Marketing",
-      avatar: "https://randomuser.me/api/portraits/men/44.jpg",
+      avatar: "https://cdn.prod.website-files.com/5e51c674258ffe10d286d30a/5e535a30d871312cf4100aed_peep-73.png",
       social: {
         twitter: "#",
         instagram: "#",
@@ -30,7 +30,7 @@ const Contributors: React.FC = () => {
     {
       name: "Vemy Salvatore",
       role: "CEO & Founder",
-      avatar: "https://randomuser.me/api/portraits/men/17.jpg",
+      avatar: "https://cdn.prod.website-files.com/5e51c674258ffe10d286d30a/5e535a877371bbe27fa0b695_peep-76.png",
       social: {
         twitter: "#",
         linkedin: "#",
@@ -40,7 +40,7 @@ const Contributors: React.FC = () => {
     {
       name: "Amy Adams",
       role: "Lead Designer",
-      avatar: "https://randomuser.me/api/portraits/women/60.jpg",
+      avatar: "https://cdn.prod.website-files.com/5e51c674258ffe10d286d30a/5e53536a9588e087617bd93c_peep-23.png",
       social: {
         twitter: "#",
         github: "#",        
@@ -122,7 +122,8 @@ const Contributors: React.FC = () => {
             </div>
             <div className="developer-image">
             <img
-              src="https://cdn.prod.website-files.com/5e51c674258ffe10d286d30a/5e535a83d3992372c25556b9_peep-76.svg"
+              // src="https://cdn.prod.website-files.com/5e51c674258ffe10d286d30a/5e535a83d3992372c25556b9_peep-76.svg"
+              src="https://cdn.prod.website-files.com/5e51c674258ffe10d286d30a/5e535741f5fa1a13a1f8f233_peep-48.png"
               alt="Developer illustration"
               className="developer-illustration"
             />

@@ -33,6 +33,17 @@ const App: React.FC = () => {
             height: '100vh',
           }}
         >
+          <img
+            src="https://cdn.prod.website-files.com/5e51c674258ffe10d286d30a/5e532a5133d3686ff53d2a74_peep-2.png"
+            alt="Work in progress"
+            style={{
+              marginBottom: '1rem',
+              borderRadius: '8px',
+              height: '150px',
+              width: '150px',
+              objectFit: 'cover',
+            }}
+          />
           <span style={{ fontSize: '3rem', marginBottom: '1rem' }}>🚧</span>
           Work under progress. Thank you for your patience. Come back soon!
         </div>
