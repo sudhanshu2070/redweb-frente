@@ -18,6 +18,26 @@ const App: React.FC = () => {
         <Route path="/contributors" element={<Contributors />} />
         <Route path="/javaIDE" element={<JavaIDE />} />
         <Route path="/pythonIDE" element={<PythonIDE />} />
+        <Route
+          path="/api-core"
+          element={
+        <div
+          style={{
+            color: 'white',
+            textAlign: 'center',
+            fontSize: '2.0rem',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '100vh',
+          }}
+        >
+          <span style={{ fontSize: '3rem', marginBottom: '1rem' }}>🚧</span>
+          Work under progress. Thank you for your patience. Come back soon!
+        </div>
+          }
+        />
         <Route path="/devCorner" element={<DevelopersCorner />} />
       </Routes>
     </Router>
