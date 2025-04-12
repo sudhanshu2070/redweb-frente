@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import * as THREE from 'three';
 import './DevelopersCorner.css';
 
-const SharpTool = ({ 
-  icon, 
-  label, 
-  color, 
+const SharpTool = ({
+  icon,
+  label,
+  color,
   position = [0, 0, 0],
   route,
   shape = 'dodecahedron'
@@ -18,25 +18,51 @@ const SharpTool = ({
   color: string;
   position?: [number, number, number];
   route: string;
-  shape?: 'tetrahedron' | 'octahedron' | 'dodecahedron' | 'icosahedron';
+  shape?: 'tetrahedron' | 'octahedron' | 'dodecahedron' | 'icosahedron' | 'donut' | 'ring' | 'lathe' | 'torus-knot' | 'extrude';
 }) => {
   const navigate = useNavigate();
-  
+
   const getGeometry = () => {
-    switch(shape) {
-      case 'tetrahedron': return new THREE.TetrahedronGeometry(1.5);
-      case 'octahedron': return new THREE.OctahedronGeometry(1.3);
-      case 'icosahedron': return new THREE.IcosahedronGeometry(1.2);
-      default: return new THREE.DodecahedronGeometry(1.3);
+    switch (shape) {
+      case 'tetrahedron':
+        return new THREE.TetrahedronGeometry(1.5);
+      case 'octahedron':
+        return new THREE.OctahedronGeometry(1.3);
+      case 'icosahedron':
+        return new THREE.IcosahedronGeometry(1.2);
+      case 'donut':
+        return new THREE.TorusGeometry(1.1, 0.4, 16, 100);
+      case 'ring':
+        return new THREE.RingGeometry(0.7, 1.2, 32);
+      case 'torus-knot':
+        return new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
+      case 'lathe': {
+        const points: THREE.Vector2[] = [];
+        for (let i = 0; i < 10; i++) {
+          points.push(new THREE.Vector2(Math.sin(i * 0.2) * 0.5 + 0.5, (i - 5) * 0.2));
+        }
+        return new THREE.LatheGeometry(points);
+      }
+      case 'extrude': {
+        const shapePath = new THREE.Shape();
+        shapePath.moveTo(0, 0);
+        shapePath.lineTo(1, 0);
+        shapePath.lineTo(1, 1);
+        shapePath.lineTo(0, 1);
+        shapePath.lineTo(0, 0);
+        const extrudeSettings = { depth: 0.5, bevelEnabled: false };
+        return new THREE.ExtrudeGeometry(shapePath, extrudeSettings);
+      }
+      default:
+        return new THREE.DodecahedronGeometry(1.3);
     }
   };
 
   return (
     <Float speed={1.5} rotationIntensity={2} floatIntensity={0.5}>
       <group position={position} onClick={() => navigate(route)}>
-        <mesh castShadow receiveShadow>
-          <bufferGeometry attach="geometry" {...getGeometry()} />
-          <meshStandardMaterial 
+        <mesh castShadow receiveShadow geometry={getGeometry()}>
+          <meshStandardMaterial
             color={color}
             metalness={0.9}
             roughness={0.1}
@@ -107,8 +133,16 @@ const DevelopersCorner: React.FC = () => {
             color="#ffa364" 
             position={[5, 1, 0]}
             route="/api-core"
-            shape="icosahedron"
+            shape="donut"
           />
+          {/* <SharpTool 
+            icon="🎀"
+            label="Torus Knot"
+            color="#f2994a"
+            position={[1, 2, 1]}
+            route="/knot"
+            shape="torus-knot"
+          /> */}
 
           <OrbitControls 
             enableZoom={true}
