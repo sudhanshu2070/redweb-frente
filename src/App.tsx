@@ -6,6 +6,7 @@ import ProductsServices from './pages/ProductsServices';
 import Contributors from './pages/Contributors';
 import JavaIDE from './components/JavaIDE/JavaIDE';
 import PythonIDE from './components/PythonIDE/PythonIDE';
+import DevelopersCorner from './components/DevelopersCorner/DevelopersCorner';
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
         <Route path="/contributors" element={<Contributors />} />
         <Route path="/javaIDE" element={<JavaIDE />} />
         <Route path="/pythonIDE" element={<PythonIDE />} />
+        <Route path="/dCorn" element={<DevelopersCorner />} />
       </Routes>
     </Router>
   );
