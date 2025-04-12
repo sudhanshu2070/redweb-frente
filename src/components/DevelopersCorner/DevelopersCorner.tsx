@@ -95,10 +95,10 @@ const DevelopersCorner: React.FC = () => {
           />
           <SharpTool 
             icon="</>" 
-            label="Code Lab" 
+            label="Python's Den" 
             color="#ff6480" 
             position={[0, 1, 5]}
-            route="/code-lab"
+            route="/pythonIDE"
             shape="octahedron"
           />
           <SharpTool 
