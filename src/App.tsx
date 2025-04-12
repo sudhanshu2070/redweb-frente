@@ -18,7 +18,7 @@ const App: React.FC = () => {
         <Route path="/contributors" element={<Contributors />} />
         <Route path="/javaIDE" element={<JavaIDE />} />
         <Route path="/pythonIDE" element={<PythonIDE />} />
-        <Route path="/dCorn" element={<DevelopersCorner />} />
+        <Route path="/devCorner" element={<DevelopersCorner />} />
       </Routes>
     </Router>
   );

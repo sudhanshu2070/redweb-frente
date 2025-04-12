@@ -1,8 +1,11 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import './Contributors.css';
+import { useNavigate } from 'react-router-dom';
 
 const Contributors: React.FC = () => {
+  const navigate = useNavigate();
+
   const contributors = [
     {
       name: "Mark Zuckerberg",
@@ -97,6 +100,37 @@ const Contributors: React.FC = () => {
           ))}
         </div>
       </section>
+
+      {/* Developer Section */}
+      <section className="developer-section">
+        <div className="developer-container">
+          <div className="developer-content">
+            <div className="developer-text">
+              <h2>Developer Tools & Resources</h2>
+              <p>
+                Explore our powerful developer tools and playgrounds designed to 
+                enhance your coding experience and boost productivity.
+              </p>
+              <button 
+                className="developer-button"
+                onClick={() => navigate('/devCorner')}
+              >
+                <span className="button-icon">{'</>'}</span>
+                <span>Go to Developer Corner</span>
+                <span className="button-arrow">→</span>
+              </button>
+            </div>
+            <div className="developer-image">
+            <img
+              src="https://cdn.prod.website-files.com/5e51c674258ffe10d286d30a/5e535a83d3992372c25556b9_peep-76.svg"
+              alt="Developer illustration"
+              className="developer-illustration"
+            />
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 };

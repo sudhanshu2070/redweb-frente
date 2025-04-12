@@ -198,6 +198,116 @@
   transform: translateY(-2px);
 }
 
+/* Developer Section Styles */
+.developer-section {
+  background: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
+  color: white;
+  padding: 4rem 0;
+  margin-top: 3rem;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  border-radius: 0;
+}
+
+.developer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.developer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.developer-text {
+  flex: 1;
+}
+
+.developer-text h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: #64ffda;
+}
+
+.developer-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.developer-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: rgba(100, 255, 218, 0.1);
+  color: #64ffda;
+  border: 1px solid #64ffda;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.developer-button:hover {
+  background: rgba(100, 255, 218, 0.2);
+  transform: translateY(-2px);
+}
+
+.button-icon {
+  font-size: 1.2rem;
+}
+
+.button-arrow {
+  transition: transform 0.3s ease;
+}
+
+.developer-button:hover .button-arrow {
+  transform: translateX(4px);
+}
+
+.developer-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.developer-image img {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .developer-content {
+    flex-direction: column;
+  }
+  
+  .developer-text {
+    order: 2;
+    text-align: center;
+  }
+  
+  .developer-image {
+    order: 1;
+    margin-bottom: 2rem;
+  }
+  
+  .developer-button {
+    margin: 0 auto;
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .contributors-hero {
