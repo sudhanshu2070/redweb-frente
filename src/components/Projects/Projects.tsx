@@ -4,29 +4,29 @@ import styles from './Projects.module.css';
 import { useRef } from 'react';
 import {aboutDevData} from '../../data/aboutData';
 
-interface Project {
-  title: string;
-  description: string;
-  link: string;
-}
+// interface Project {
+//   title: string;
+//   description: string;
+//   link: string;
+// }
 
-const projects: Project[] = [
-  {
-    title: 'Project One',
-    description: 'A cool app with interactive animations.',
-    link: '#',
-  },
-  {
-    title: 'Project Two',
-    description: 'A sleek dashboard with real-time data.',
-    link: '#',
-  },
-  {
-    title: 'Project Three',
-    description: 'An e-commerce site with smooth UX.',
-    link: '#',
-  },
-];
+// const projects: Project[] = [
+//   {
+//     title: 'Project One',
+//     description: 'A cool app with interactive animations.',
+//     link: '#',
+//   },
+//   {
+//     title: 'Project Two',
+//     description: 'A sleek dashboard with real-time data.',
+//     link: '#',
+//   },
+//   {
+//     title: 'Project Three',
+//     description: 'An e-commerce site with smooth UX.',
+//     link: '#',
+//   },
+// ];
 
 const Projects: React.FC = () => {
   const ref = useRef(null);

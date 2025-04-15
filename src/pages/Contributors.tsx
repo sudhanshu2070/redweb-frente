@@ -93,7 +93,11 @@ const Contributors: React.FC = () => {
                 <h3>{person.name}</h3>
                 <p className="role">{person.role}</p>
                 <div className="card-footer">
-                  <button className="contact-btn">Contact</button>
+                  <button 
+                  className="contact-btn"
+                    onClick={() => navigate('/aboutDev', { state: { name: person.name } })}
+                  >
+                    Contact</button>
                 </div>
               </div>
             </div>
