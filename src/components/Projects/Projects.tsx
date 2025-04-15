@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import styles from './Projects.module.css';
 import { useRef } from 'react';
+import {aboutDevData} from '../../data/aboutData';
 
 interface Project {
   title: string;
@@ -66,7 +67,7 @@ const Projects: React.FC = () => {
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
       >
-        {projects.map((project) => (
+        {aboutDevData.ceo[0].projects.map((project) => (
           <motion.div
             key={project.title}
             className={styles.projectCard}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styles from './Hero.module.css';
+import {aboutDevData} from '../../data/aboutData';
 
 const Hero: React.FC = () => {
   const textVariants = {
@@ -29,7 +30,7 @@ const Hero: React.FC = () => {
         animate="visible"
         className={styles.title}
       >
-        Hey, I'm <motion.span variants={floatVariants} animate="animate" className={styles.name}>Vemy Salavtore</motion.span>!
+        Hey, I'm <motion.span variants={floatVariants} animate="animate" className={styles.name}>{aboutDevData.ceo[0].name}</motion.span>!
       </motion.h1>
       <motion.p
         variants={textVariants}

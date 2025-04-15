@@ -85,7 +85,7 @@ export const aboutDevData = {
   ceo: [
     {
       name: 'Vemy Salavtore',
-      skills: 'TypeScript, JavaScript, React, Node.js, Express, React-Native, Next.js, Java, C#, Python, HTML, CSS, SQL, MongoDB',
+      skills: ['TypeScript', 'JavaScript', 'React', 'Node.js', 'Express', 'React-Native', 'Next.js', 'Java', 'C#', 'Python', 'HTML', 'CSS', 'SQL', 'MongoDB'],
       projects:[
         {
           title: 'Chat-AI',

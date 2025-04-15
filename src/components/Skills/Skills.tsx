@@ -2,10 +2,11 @@ import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import styles from './Skills.module.css';
 import { useRef } from 'react';
+import {aboutDevData} from '../../data/aboutData';
 
-const skills = [
-  'React', 'TypeScript', 'CSS', 'JavaScript', 'Framer Motion', 'HTML'
-];
+// const skills = [
+//   'React', 'TypeScript', 'CSS', 'JavaScript', 'Framer Motion', 'HTML'
+// ];
 
 const Skills: React.FC = () => {
   const ref = useRef(null);
@@ -46,7 +47,7 @@ const Skills: React.FC = () => {
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
       >
-        {skills.map((skill) => (
+        {aboutDevData.ceo[0].skills.map((skill) => (
           <motion.div
             key={skill}
             className={styles.skillCard}
