@@ -98,7 +98,7 @@ export const aboutDevData = {
           link: '#',
         },
         {
-          title: 'DevOps Hub',
+          title: 'D Hub',
           description: 'A full-stack project with React and TypeScript on the frontend, MongoDB and Express with TypeScript on the backend, and CI/CD pipelines for seamless deployment.',
           link: '#',
         },
