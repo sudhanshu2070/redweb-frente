@@ -18,15 +18,13 @@ const ShowcasePage: React.FC = () => {
   useEffect(() => {
     if (name !== devName && !hasShownToast.current) {
       
-      toast.error('❌ Developer not available', {
+      toast.error('Nope, not today! 𓍊𓋼𓍊𓋼𓍊', {
         style: {
           borderRadius: '10px',
           background: '#1f1f1f',
           color: '#fff',
           boxShadow: '0px 5px 20px rgba(0,0,0,0.35)',
-          transform: 'rotateX(5deg)', // subtle 3D style
         },
-        icon: '🚫',
       });
       hasShownToast.current = true; // toast only once
     }
