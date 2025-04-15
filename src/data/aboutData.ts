@@ -90,17 +90,17 @@ export const aboutDevData = {
         {
           title: 'Chat-AI',
           description: 'React-based web application that provides AI-driven customer support.',
-          link: '#',
+          link: 'https://github.com/sudhanshu2070',
         },
         {
           title: 'BlendIn',
           description: 'Developed a full-stack web app using MERN stack and a mobile app with React Native and Expo for Android.',
-          link: '#',
+          link: 'https://github.com/sudhanshu2070',
         },
         {
           title: 'D Hub',
           description: 'A full-stack project with React and TypeScript on the frontend, MongoDB and Express with TypeScript on the backend, and CI/CD pipelines for seamless deployment.',
-          link: '#',
+          link: 'https://github.com/sudhanshu2070',
         },
       ],
     },

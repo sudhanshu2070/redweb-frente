@@ -10,13 +10,13 @@ import { useLocation } from 'react-router-dom';
 const ShowcasePage: React.FC = () => {
 
   const location = useLocation();
-  const { name } = location.state || {}; 
+  const { namefromParam } = location.state || {}; 
   const devName = 'Vemy Salvatore';
   
   const hasShownToast = useRef(false); // to persist between renders
   
   useEffect(() => {
-    if (name !== devName && !hasShownToast.current) {
+    if (namefromParam !== devName && !hasShownToast.current) {
       
       toast.error('Nope, not today! 𓍊𓋼𓍊𓋼𓍊', {
         style: {
@@ -28,31 +28,18 @@ const ShowcasePage: React.FC = () => {
       });
       hasShownToast.current = true; // toast only once
     }
-  }, [name, devName]);
+  }, [namefromParam, devName]);
 
-  if (name !== devName) {
+  if (namefromParam !== devName) {
     return (
       <>
         <Toaster position="top-center" reverseOrder={false} />
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh',
-            textAlign: 'center',
-            fontSize: '1.5rem',
-            color: '#d3d3d3', 
-            background: 'linear-gradient(135deg, #4b4b4b, #6e6e6e)', 
-            padding: '20px',
-            boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.5)',
-          }}
-        >
+        <div className={styles.errorContainer}>
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            className={styles.motionWrapper}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: 'easeInOut' }}
+            transition={{ duration: 0.6, ease: [0.42, 0, 0.58, 1] }}
             style={{
               background: 'rgba(255, 255, 255, 0.1)',
               padding: '20px 30px',
@@ -60,13 +47,33 @@ const ShowcasePage: React.FC = () => {
               boxShadow: '0px 5px 15px rgba(0, 0, 0, 0.3)',
             }}
           >
-            <h1 style={{ margin: 0, fontSize: '2rem', fontWeight: 'bold' }}>
-               Contributor Unavailable
-            </h1>
-            <p style={{ marginTop: '10px', fontSize: '1.2rem', lineHeight: '1.5' }}>
-              Please check back later. We appreciate your patience and
-              understanding. ↟ 𖣂 ᨒ↟ 𖠰
-            </p>
+        <h1 style={{ margin: 0, fontSize: '2rem', fontWeight: 'bold' }}>
+          Contributor Unavailable
+        </h1>
+        <p style={{ marginTop: '10px', fontSize: '1.2rem', lineHeight: '1.5' }}>
+          Please check back later. We appreciate your patience and
+          unerstanding. ↟ 𖣂 ᨒ↟ 𖠰d
+        </p>
+        <button
+          onClick={() => (window.location.href = '/contributors')}
+          style={{
+            marginTop: '20px',
+            padding: '10px 20px',
+            fontSize: '1rem',
+            fontWeight: 'bold',
+            color: '#fff',
+            background: 'linear-gradient(135deg, #6e6e6e, #4b4b4b)',
+            border: 'none',
+            borderRadius: '5px',
+            cursor: 'pointer',
+            boxShadow: '0px 5px 15px rgba(0, 0, 0, 0.3)',
+            transition: 'transform 0.2s ease',
+          }}
+          onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+          onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+        >
+          Go Back to Home
+        </button>
           </motion.div>
         </div>
       </>
@@ -84,7 +91,7 @@ const ShowcasePage: React.FC = () => {
       >
         <Hero />
         <Skills />
-        <Projects />
+        <Projects /> 
       </motion.div>
     </>
   );

@@ -15,6 +15,27 @@
     animation: pulse 10s infinite;
   }
   
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #d3d3d3;
+  background: linear-gradient(135deg, #4b4b4b, #6e6e6e);
+  padding: 20px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.motionWrapper {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
   @keyframes pulse {
     0% {
       transform: scale(1);

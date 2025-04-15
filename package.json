@@ -23,7 +23,7 @@
     "child_process": "^1.0.2",
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "framer-motion": "^12.6.2",
+    "framer-motion": "^12.7.3",
     "react": "^19.1.0",
     "react-ace": "^14.0.1",
     "react-dom": "^19.1.0",
