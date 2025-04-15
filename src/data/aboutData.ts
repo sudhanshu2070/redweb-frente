@@ -81,3 +81,28 @@ export const aboutData = {
     { value: '300+', label: 'Happy Clients' },
   ],
 };
+export const aboutDevData = {
+  ceo: [
+    {
+      name: 'Vemy Salavtore',
+      skills: 'TypeScript, JavaScript, React, Node.js, Express, React-Native, Next.js, Java, C#, Python, HTML, CSS, SQL, MongoDB',
+      projects:[
+        {
+          title: 'Chat-AI',
+          description: 'React-based web application that provides AI-driven customer support.',
+          link: '#',
+        },
+        {
+          title: 'BlendIn',
+          description: 'Developed a full-stack web app using MERN stack and a mobile app with React Native and Expo for Android.',
+          link: '#',
+        },
+        {
+          title: 'DevOps Hub',
+          description: 'A full-stack project with React and TypeScript on the frontend, MongoDB and Express with TypeScript on the backend, and CI/CD pipelines for seamless deployment.',
+          link: '#',
+        },
+      ],
+    },
+  ],
+};

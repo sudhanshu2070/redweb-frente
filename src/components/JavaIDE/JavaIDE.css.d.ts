@@ -1,0 +1,32 @@
+declare const styles: {
+  readonly "ace-dracula": string;
+  readonly "ace_gutter": string;
+  readonly "ace_gutter-active-line": string;
+  readonly "active": string;
+  readonly "console-line": string;
+  readonly "console-view": string;
+  readonly "editor-container": string;
+  readonly "file-info": string;
+  readonly "header-left": string;
+  readonly "ide-body": string;
+  readonly "ide-footer": string;
+  readonly "ide-header": string;
+  readonly "ide-title": string;
+  readonly "java-ide-container": string;
+  readonly "output-container": string;
+  readonly "output-content": string;
+  readonly "output-result": string;
+  readonly "output-tabs": string;
+  readonly "play-icon": string;
+  readonly "run-button": string;
+  readonly "running": string;
+  readonly "show": string;
+  readonly "spin": string;
+  readonly "spinner": string;
+  readonly "status-bar": string;
+  readonly "status-item": string;
+  readonly "tab-button": string;
+  readonly "title-icon": string;
+};
+export = styles;
+

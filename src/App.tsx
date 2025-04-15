@@ -7,6 +7,7 @@ import Contributors from './pages/Contributors';
 import JavaIDE from './components/JavaIDE/JavaIDE';
 import PythonIDE from './components/PythonIDE/PythonIDE';
 import DevelopersCorner from './components/DevelopersCorner/DevelopersCorner';
+import ShowcasePage from './pages/ShowcasePage/ShowcasePage';
 
 const App: React.FC = () => {
   return (
@@ -50,6 +51,7 @@ const App: React.FC = () => {
           }
         />
         <Route path="/devCorner" element={<DevelopersCorner />} />
+        <Route path="/aboutDev" element={<ShowcasePage />} />
       </Routes>
     </Router>
   );
