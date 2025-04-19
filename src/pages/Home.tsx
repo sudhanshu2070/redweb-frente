@@ -26,7 +26,7 @@ const Home: React.FC = () => {
           typingSpeed={125}
         />
         <button className="redweb-home__cta-button">
-          <span className="redweb-home__cta-text">Get Started</span>
+          <span className="redweb-home__cta-text" onClick={() => (window.location.href = '/products-services')}>Get Started</span>
           <span className="redweb-home__cta-icon">→</span>
         </button>
       </div>
