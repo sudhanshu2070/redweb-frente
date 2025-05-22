@@ -31,6 +31,9 @@ const Home: React.FC = () => {
           <span className="redweb-home__cta-icon">→</span>
         </button>
       </div>
+      
+      <Testimonial />
+
       <div className="redweb-home__separator"></div>
       <div className="redweb-home__section-intro">
         <h2>Have Questions?</h2>
@@ -58,7 +61,6 @@ const Home: React.FC = () => {
           onClose={() => setIsModalOpen(false)}
         />
       </section>
-      <Testimonial />
     </div>
   );
 };

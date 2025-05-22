@@ -1,51 +1,51 @@
 [
   {
     "id": 1,
-    "name": "Alex Carter",
-    "role": "Software Engineer",
-    "content": "This platform has transformed the way I work. The tools are intuitive, and the support is phenomenal!",
-    "avatar": "https://randomuser.me/api/portraits/men/1.jpg"
+    "name": "Rahul Mehta",
+    "role": "Full Stack Developer",
+    "content": "This platform has completely streamlined my workflow. The integration with development tools is seamless.",
+    "avatar": "https://randomuser.me/api/portraits/men/12.jpg"
   },
   {
     "id": 2,
-    "name": "Sofia Nguyen",
-    "role": "Product Manager",
-    "content": "The user experience is top-notch. I love how seamless everything feels, from setup to execution.",
-    "avatar": "https://randomuser.me/api/portraits/women/2.jpg"
+    "name": "Ananya Sharma",
+    "role": "Project Manager",
+    "content": "Super impressed with the clean UI and how easy it is to onboard new team members. A huge time-saver!",
+    "avatar": "https://randomuser.me/api/portraits/women/22.jpg"
   },
   {
     "id": 3,
-    "name": "Liam Patel",
-    "role": "Designer",
-    "content": "The dark theme is sleek, and the features are so easy to use. Highly recommend this to everyone!",
-    "avatar": "https://randomuser.me/api/portraits/men/3.jpg"
+    "name": "Luca Rossi",
+    "role": "UI/UX Designer",
+    "content": "Everything from typography to animations feels professionally crafted. This tool inspires confidence.",
+    "avatar": "https://randomuser.me/api/portraits/men/23.jpg"
   },
   {
     "id": 4,
-    "name": "Emma Rodriguez",
-    "role": "Data Scientist",
-    "content": "Incredible performance and flexibility. It’s been a game-changer for my projects!",
-    "avatar": "https://randomuser.me/api/portraits/women/4.jpg"
+    "name": "Elena Petrova",
+    "role": "Data Analyst",
+    "content": "The dashboard features are incredibly insightful. It's helped our team make data-driven decisions faster.",
+    "avatar": "https://randomuser.me/api/portraits/women/24.jpg"
   },
   {
     "id": 5,
-    "name": "James Lee",
-    "role": "DevOps Engineer",
-    "content": "The platform’s reliability and speed are unmatched. It’s my go-to tool every day.",
+    "name": "Karan Singh",
+    "role": "DevOps Specialist",
+    "content": "Reliable, fast, and secure — exactly what I need to manage deployments across multiple environments.",
     "avatar": "https://randomuser.me/api/portraits/men/5.jpg"
   },
   {
     "id": 6,
-    "name": "Isabella Chen",
-    "role": "UX Researcher",
-    "content": "The intuitive design and powerful features make my work so much easier. Love it!",
-    "avatar": "https://randomuser.me/api/portraits/women/6.jpg"
+    "name": "Priya Desai",
+    "role": "User Researcher",
+    "content": "Our users love the changes we implemented using this tool. The feedback has been overwhelmingly positive.",
+    "avatar": "https://randomuser.me/api/portraits/women/15.jpg"
   },
   {
     "id": 7,
-    "name": "Michael Brown",
-    "role": "Frontend Developer",
-    "content": "The modern interface and smooth animations make this a joy to use. Highly recommend!",
-    "avatar": "https://randomuser.me/api/portraits/men/7.jpg"
+    "name": "Tomás Müller",
+    "role": "Frontend Engineer",
+    "content": "Animations are smooth, and the performance is top-tier. It's a pleasure to work with such modern tech.",
+    "avatar": "https://randomuser.me/api/portraits/men/27.jpg"
   }
 ]
