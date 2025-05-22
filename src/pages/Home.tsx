@@ -4,6 +4,7 @@ import './Home.css';
 import AnimatedText from '../components/AnimatedText';
 import QandA from '../components/QnA/QandA';
 import ContactModal from '../components/SmartContactForm/ContactModal';
+import Testimonial from '../components/Testimonial/Testimonial';
 
 const Home: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -57,6 +58,7 @@ const Home: React.FC = () => {
           onClose={() => setIsModalOpen(false)}
         />
       </section>
+      <Testimonial />
     </div>
   );
 };
