@@ -1,144 +1,214 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import './About.css';
 import { aboutData } from '../data/aboutData';
 
 const About: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const missionSectionRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+  const [activeMilestone, setActiveMilestone] = useState(0);
   const serviceCardsRef = useRef<(HTMLLIElement | null)[]>([]);
 
   useEffect(() => {
-    // Trigger initial animations
-    setIsVisible(true);
-
-    // Set up Intersection Observer for service cards
-    const currentServiceCards = serviceCardsRef.current; 
-
+    const cards = serviceCardsRef.current;
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-          }
-        });
-      },
-      { threshold: 0.1 }
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animate-in'); }),
+      { threshold: 0.12 }
     );
-
-    currentServiceCards.forEach(card => {
-      if (card) observer.observe(card);
-    });
-
-    return () => {
-      currentServiceCards.forEach(card => {
-        if (card) observer.unobserve(card);
-      });
-    };
+    cards.forEach(c => { if (c) observer.observe(c); });
+    return () => cards.forEach(c => { if (c) observer.unobserve(c); });
   }, []);
 
   return (
-    <div className="about-container">
+    <div className="about-page">
       <Navbar />
-      
-      <section className={`about-hero-section ${isVisible ? 'animate-in' : ''}`}>
-        <div className="about-hero-content">
-          <h1 className="about-hero-headline">
-            Crafting <span className="about-hero-highlight">Digital Excellence</span>
-          </h1>
-          <p className="about-hero-subhead">
-            We transform ideas into impactful digital experiences through innovation and expertise
-          </p>
-        </div>
-        <div className="about-hero-scroll-indicator">
-          <span className="about-hero-scroll-arrow"></span>
+
+      {/* ── Hero ─────────────────────────────────────────────────────── */}
+      <section className="about-hero">
+        <div className="container about-hero__inner">
+          <div className="about-hero__text">
+            <p className="t-overline about-hero__eyebrow">About Redweb</p>
+            <h1 className="t-h1 about-hero__heading">
+              Your solutioning partner<br />
+              <em>for software solutions everywhere.</em>
+            </h1>
+          </div>
+          <div className="about-hero__side">
+            <p className="t-body-lg">
+              Redweb is a solutioning partner that believes enterprise-grade technology
+              should be accessible to every organisation — not just those with the largest budgets.
+              We combine the strategic rigour of a top-tier consultancy with the engineering precision of a
+              product-grade software company.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="about-mission-section" ref={missionSectionRef}>
-        <div className="about-mission-content">
-          <div className="about-mission-text">
-            <h2 className="about-mission-title">Our Mission</h2>
-            <p className="about-mission-description">
-              To empower businesses with cutting-edge digital solutions that drive growth, 
-              enhance user experiences, and create lasting value in an ever-evolving technological landscape.
+      <hr className="divider" />
+
+      {/* ── Stats Row ─────────────────────────────────────────────────── */}
+      <section className="about-stats">
+        <div className="container about-stats__grid">
+          {aboutData.stats.map((s, i) => (
+            <div key={i} className="about-stat-item">
+              <span className="about-stat-item__value">{s.value}</span>
+              <span className="about-stat-item__label">{s.label}</span>
+            </div>
+          ))}
+          <div className="about-stat-item">
+            <span className="about-stat-item__value">2018</span>
+            <span className="about-stat-item__label">Year Founded</span>
+          </div>
+        </div>
+      </section>
+
+      <hr className="divider" />
+
+      {/* ── Mission ──────────────────────────────────────────────────── */}
+      <section className="about-mission">
+        <div className="container about-mission__inner">
+          <div className="about-mission__left">
+            <div className="section-rule" />
+            <h2 className="t-h2">Our mission</h2>
+          </div>
+          <div className="about-mission__right">
+            <p className="t-body-lg">
+              To make high-quality, precision-engineered software solutions affordable and accessible to organisations of every size —
+              delivering the strategy, integration, and engineering excellence that helps businesses grow with confidence.
+            </p>
+            <div className="about-mission__values">
+              {[
+                { title: 'Precision', body: 'Every line of code, every architecture decision, every client interaction is held to the highest standard.' },
+                { title: 'Transparency', body: 'Fixed-scope pricing, weekly delivery checkpoints, and complete visibility at every stage of engagement.' },
+                { title: 'Partnership', body: 'We measure success by our clients\' outcomes — not by hours billed or project extensions.' }
+              ].map((v, i) => (
+                <div key={i} className="about-value-block">
+                  <h3 className="about-value-block__title">{v.title}</h3>
+                  <p className="about-value-block__body">{v.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr className="divider" />
+
+      {/* ── Services ──────────────────────────────────────────────────── */}
+      <section className="about-services">
+        <div className="container">
+          <div className="about-services__header">
+            <div className="section-rule" />
+            <h2 className="t-h2">What we do</h2>
+            <p className="t-body-lg about-services__sub">
+              Three integrated practices that span the full technology value chain.
             </p>
           </div>
-          <div className="about-mission-stats">
-            {aboutData.stats.map((stat, index) => (
-              <div key={index} className="about-mission-stat">
-                <span className="about-mission-stat-number">{stat.value}</span>
-                <span className="about-mission-stat-label">{stat.label}</span>
+          <ul className="about-services__grid">
+            {aboutData.services.map((svc, i) => (
+              <li
+                key={svc.id}
+                ref={el => { serviceCardsRef.current[i] = el; }}
+                className="about-svc-card"
+                style={{ '--accent': svc.color } as React.CSSProperties}
+              >
+                <div className="about-svc-card__icon">
+                  <i className={svc.icon} style={{ color: svc.color }} />
+                </div>
+                <h3 className="about-svc-card__title t-h3">{svc.title}</h3>
+                <p className="about-svc-card__body">{svc.description}</p>
+                <ul className="about-svc-card__features">
+                  {svc.features.map((f, j) => (
+                    <li key={j}>{f}</li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <hr className="divider" />
+
+      {/* ── Timeline ──────────────────────────────────────────────────── */}
+      <section className="about-timeline">
+        <div className="container about-timeline__inner">
+          <div className="about-timeline__left">
+            <div className="section-rule" />
+            <h2 className="t-h2">Our journey</h2>
+            <div className="timeline-year-list">
+              {aboutData.milestones.map((m, i) => (
+                <button
+                  key={i}
+                  className={`timeline-year-btn ${activeMilestone === i ? 'active' : ''}`}
+                  onClick={() => setActiveMilestone(i)}
+                >
+                  {m.year}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="about-timeline__right">
+            <span className="timeline-big-year">{aboutData.milestones[activeMilestone].year}</span>
+            <h3 className="t-h3 timeline-event-title">{aboutData.milestones[activeMilestone].title}</h3>
+            <p className="t-body-lg timeline-event-body">{aboutData.milestones[activeMilestone].desc}</p>
+          </div>
+        </div>
+      </section>
+
+      <hr className="divider" />
+
+      {/* ── Team ─────────────────────────────────────────────────────── */}
+      <section className="about-team">
+        <div className="container">
+          <div className="about-team__header">
+            <div className="section-rule" />
+            <h2 className="t-h2">Leadership</h2>
+          </div>
+          <div className="about-team__grid">
+            {aboutData.team.map((member, i) => (
+              <div key={i} className="about-team-card">
+                <div className="about-team-card__img-wrap">
+                  <img src={member.image} alt={member.name} className="about-team-card__img" />
+                  <div className="about-team-card__socials">
+                    {member.socials.map((s, j) => (
+                      <a key={j} href={s.url} target="_blank" rel="noreferrer" className="about-team-card__social">
+                        <i className={s.icon} />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+                <div className="about-team-card__body">
+                  <h3 className="about-team-card__name">{member.name}</h3>
+                  <p className="about-team-card__role">{member.position}</p>
+                  <p className="about-team-card__bio">{member.bio}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="about-services-section">
-        <div className="about-services-header">
-          <h2 className="about-services-title">Our Core Expertise</h2>
-          <p className="about-services-subtitle">Specialized services that drive your digital success</p>
-        </div>
-        
-        <ul className="about-services-grid">
-          {aboutData.services.map((service, index) => (
-            <li
-              key={service.id}
-              ref={el => { serviceCardsRef.current[index] = el; }}
-              className="about-service-card"
-              style={{ '--service-accent-color': service.color } as React.CSSProperties}
-            >
-              <div className="about-service-icon">
-                <i className={service.icon}></i>
-              </div>
-              <div className="about-service-content">
-                <h3 className="about-service-title">{service.title}</h3>
-                <p className="about-service-description">{service.description}</p>
-                <ul className="about-service-features">
-                  {service.features.map((feature, i) => (
-                    <li key={i} className="about-service-feature">{feature}</li>
-                  ))}
-                </ul>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="about-team-section">
-        <div className="about-team-header">
-          <h2 className="about-team-title">Meet The Team</h2>
-          <p className="about-team-subtitle">The brilliant minds behind our success</p>
-        </div>
-        <div className="about-team-grid">
-          {aboutData.team.map((member, index) => (
-            <div key={index} className="about-team-member">
-              <div className="about-team-member-image">
-                <img src={member.image} alt={member.name} className="about-team-member-photo" />
-                <div className="about-team-member-socials">
-                  {member.socials.map((social, i) => (
-                    <a key={i} href={social.url} target="_blank" rel="noopener noreferrer" className="about-team-member-social-link">
-                      <i className={social.icon}></i>
-                    </a>
-                  ))}
-                </div>
-              </div>
-              <div className="about-team-member-info">
-                <h3 className="about-team-member-name">{member.name}</h3>
-                <p className="about-team-member-position">{member.position}</p>
-                <p className="about-team-member-bio">{member.bio}</p>
-              </div>
-            </div>
-          ))}
+      {/* ── CTA ─────────────────────────────────────────────────────── */}
+      <section className="about-cta">
+        <div className="container about-cta__inner">
+          <div>
+            <div className="section-rule section-rule--dark" />
+            <h2 className="t-h2" style={{ color: '#fff' }}>
+              Ready to start a conversation?
+            </h2>
+            <p style={{ color: 'rgba(255,255,255,0.65)', marginTop: '1rem', fontSize: '1.1rem', maxWidth: 520 }}>
+              Our consulting team is available for a no-obligation discovery call to understand your technology objectives.
+            </p>
+          </div>
+          <button className="btn btn-gold" onClick={() => navigate('/contact')}>
+            Contact us →
+          </button>
         </div>
       </section>
 
-      <section className="about-cta-section">
-        <h2 className="about-cta-title">Ready to Start Your Project?</h2>
-        <p className="about-cta-text">Let's discuss how we can help you achieve your digital goals</p>
-        <button className="about-cta-button">Get in Touch</button>
-      </section>
+      <Footer />
     </div>
   );
 };

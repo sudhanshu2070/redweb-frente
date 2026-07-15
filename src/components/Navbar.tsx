@@ -52,6 +52,7 @@ const Navbar: React.FC = () => {
               { path: '/about', label: 'About' },
               { path: '/products-services', label: 'Products & Services' },
               { path: '/contributors', label: 'Contributors' },
+              { path: '/contact', label: 'Contact Us' },
             ].map((item) => (
               <li key={item.path}>
                 <NavLink

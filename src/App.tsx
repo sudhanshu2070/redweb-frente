@@ -1,22 +1,35 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useLayoutEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import ProductsServices from './pages/ProductsServices';
 import Contributors from './pages/Contributors';
+import Contact from './pages/Contact';
 import JavaIDE from './components/JavaIDE/JavaIDE';
 import PythonIDE from './components/PythonIDE/PythonIDE';
 import DevelopersCorner from './components/DevelopersCorner/DevelopersCorner';
 import ShowcasePage from './pages/ShowcasePage/ShowcasePage';
 
+const ScrollToTop: React.FC = () => {
+  const { pathname } = useLocation();
+
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [pathname]);
+
+  return null;
+};
+
 const App: React.FC = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/products-services" element={<ProductsServices />} />
         <Route path="/contributors" element={<Contributors />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/javaIDE" element={<JavaIDE />} />
         <Route path="/pythonIDE" element={<PythonIDE />} />
         <Route

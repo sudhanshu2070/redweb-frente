@@ -1,91 +1,214 @@
 .smart-form-container {
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .form-group {
-    margin-bottom: 1.5rem;
-    position: relative;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-  }
-  
-  input, select {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(0, 0, 0, 0.2);
-    color: white;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-  }
-  
-  input:focus, select:focus {
-    outline: none;
-    border-color: #ff4d4d;
-    box-shadow: 0 0 0 2px rgba(255, 77, 77, 0.2);
-  }
-  
-  .suggestions-box {
-    position: absolute;
-    width: 100%;
-    background: #1e1e2d;
-    border-radius: 0 0 8px 8px;
-    z-index: 10;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-top: none;
-  }
-  
-  .suggestions-box div {
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-  }
-  
-  .suggestions-box div:hover {
-    background: rgba(255, 77, 77, 0.1);
-  }
-  
-  .submit-btn {
-    background: linear-gradient(135deg, #ff4d4d, #cc2b2b);
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    font-weight: 600;
-    cursor: pointer;
-    width: 100%;
-    transition: all 0.3s ease;
-  }
-  
-  .submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
-  }
-  
-  /* Animation for dynamic fields */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  .form-group {
-    animation: fadeIn 0.3s ease-out forwards;
-  }
+  position: relative;
+  width: 100%;
+}
 
-  .modal-content {
-    animation: slideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  
-  @keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
+.smart-form-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(18px);
+}
+
+.smart-form__header {
+  margin-bottom: 1.5rem;
+}
+
+.smart-form__eyebrow {
+  margin: 0 0 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #ff9f43;
+}
+
+.smart-form__header h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.65rem;
+  color: #fff;
+}
+
+.smart-form__header p {
+  margin: 0;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.6;
+}
+
+.smart-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.form-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f7f7f8;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(6, 10, 24, 0.72);
+  color: #fff;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  font-size: 0.95rem;
+}
+
+.form-group input::placeholder {
+  color: rgba(255,255,255,0.45);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #ff9f43;
+  box-shadow: 0 0 0 2px rgba(255, 159, 67, 0.22);
+}
+
+.field-error {
+  font-size: 0.82rem;
+  color: #ff8a8a;
+}
+
+.suggestions-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.4rem;
+  padding: 0.5rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.suggestions-box button {
+  border: none;
+  background: transparent;
+  text-align: left;
+  padding: 0.45rem 0.25rem;
+  color: #f7f7f8;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.suggestions-box button:hover {
+  background: rgba(255, 159, 67, 0.16);
+}
+
+.submit-btn {
+  margin-top: 0.4rem;
+  border: none;
+  border-radius: 999px;
+  padding: 0.95rem 1.2rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 10px 24px rgba(255, 107, 107, 0.24);
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(255, 107, 107, 0.32);
+}
+
+.submission-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: grid;
+  place-items: center;
+  background: rgba(2, 6, 23, 0.72);
+  backdrop-filter: blur(8px);
+}
+
+.submission-modal__card {
+  width: min(92vw, 420px);
+  padding: 2rem;
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.14), rgba(255,255,255,0.08));
+  border: 1px solid rgba(255,255,255,0.16);
+  text-align: center;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 1rem;
+  border: 4px solid rgba(255,255,255,0.2);
+  border-top-color: #ff9f43;
+  border-radius: 50%;
+  animation: spin 0.95s linear infinite;
+}
+
+.success-badge {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 1rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(47, 213, 123, 0.15);
+  color: #5ef2a1;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.submission-modal__card h4 {
+  margin: 0 0 0.5rem;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.submission-modal__card p {
+  margin: 0 0 1rem;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.6;
+}
+
+.submission-close {
+  border: none;
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  background: #fff;
+  color: #111;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
