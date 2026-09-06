@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../assets/redweb-logo.jpg';
 import ContactModal from './SmartContactForm/ContactModal';
+import { activeClientConfig } from '../config/client';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,7 +30,7 @@ const Navbar: React.FC = () => {
         {/* Brand and Logo */}
         <NavLink to="/" className="navbar-brand" onClick={closeMenu}>
           <img src={logo} alt="Redweb Logo" className="navbar-logo" />
-          <span className="brand-name">Redweb</span>
+          <span className="brand-name">{activeClientConfig.brand}</span>
         </NavLink>
 
         {/* Hamburger Menu for Mobile */}

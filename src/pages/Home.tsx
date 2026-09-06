@@ -6,6 +6,8 @@ import QandA from '../components/QnA/QandA';
 import ContactModal from '../components/SmartContactForm/ContactModal';
 import Testimonial from '../components/Testimonial/Testimonial';
 import './Home.css';
+import PetSite from './PetSite';
+import { isPetClient } from '../config/client';
 
 const practices = [
   {
@@ -80,7 +82,7 @@ const capabilities = [
   }
 ];
 
-const Home: React.FC = () => {
+const IndustryHome: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeCap, setActiveCap] = useState('strategy');
   const current = capabilities.find(c => c.id === activeCap)!;
@@ -268,5 +270,7 @@ const Home: React.FC = () => {
     </div>
   );
 };
+
+const Home: React.FC = () => isPetClient ? <PetSite /> : <IndustryHome />;
 
 export default Home;

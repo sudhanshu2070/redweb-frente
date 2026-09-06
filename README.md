@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Client variants
+
+Copy `.env.example` to `.env` and set `REACT_APP_CLIENT` to `industry` or `pets`:
+
+```env
+REACT_APP_CLIENT=pets
+```
+
+`industry` is the default when the value is missing or unknown. The `pets` variant switches the home, story, shop, pack, contact, and bag routes to the responsive Better Humans storefront.
+
 ## Available Scripts
 
 In the project directory, you can run:

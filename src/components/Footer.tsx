@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaLinkedinIn, FaGithub, FaTwitter, FaEnvelope } from 'react-icons/fa';
 import './Footer.css';
+import { isPetClient } from '../config/client';
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -22,9 +23,9 @@ const Footer: React.FC = () => {
         <div className="cyber-footer__row">
           {/* Brand */}
           <div className="cyber-footer__col brand-col">
-            <h3 className="cyber-footer__logo">Red<span>web</span></h3>
+            <h3 className="cyber-footer__logo">{isPetClient ? <>better <span>humans</span></> : <>Red<span>web</span></>}</h3>
             <p className="cyber-footer__description">
-              We are your solutioning partner, delivering software solutions everywhere through consulting, platform integration, and in-house applications.
+              {isPetClient ? 'Thoughtful goods for pets and their people, chosen for comfort, character, and everyday joy.' : 'We are your solutioning partner, delivering software solutions everywhere through consulting, platform integration, and in-house applications.'}
             </p>
             <div className="cyber-footer__socials">
               <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
@@ -35,40 +36,35 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div className="cyber-footer__col Links-col">
-            <h4>Company</h4>
+            <h4>{isPetClient ? 'Explore' : 'Company'}</h4>
             <ul className="cyber-footer__links">
               <li><NavLink to="/">Home</NavLink></li>
-              <li><NavLink to="/about">About Us</NavLink></li>
-              <li><NavLink to="/products-services">Services</NavLink></li>
-              <li><NavLink to="/contributors">Team</NavLink></li>
+              <li><NavLink to="/about">{isPetClient ? 'Our story' : 'About Us'}</NavLink></li>
+              <li><NavLink to="/products-services">{isPetClient ? 'Shop' : 'Services'}</NavLink></li>
+              <li><NavLink to="/contributors">{isPetClient ? 'Our pack' : 'Team'}</NavLink></li>
               <li><NavLink to="/contact">Contact</NavLink></li>
             </ul>
           </div>
 
           {/* Services */}
           <div className="cyber-footer__col divisions-col">
-            <h4>Services</h4>
+            <h4>{isPetClient ? 'Good things' : 'Services'}</h4>
             <ul className="cyber-footer__links">
-              <li>IT & Management Consulting</li>
-              <li>Platform Integration</li>
-              <li>Custom Applications</li>
-              <li>Tower Industry Software</li>
-              <li>SRE & DevOps</li>
-              <li>Data & Analytics</li>
+              {isPetClient ? <><li>Walk essentials</li><li>Rest & recharge</li><li>Little rewards</li><li>New arrivals</li><li>Gift cards</li><li>Care guide</li></> : <><li>IT & Management Consulting</li><li>Platform Integration</li><li>Custom Applications</li><li>Tower Industry Software</li><li>SRE & DevOps</li><li>Data & Analytics</li></>}
             </ul>
           </div>
 
           {/* Newsletter */}
           <div className="cyber-footer__col newsletter-col">
-            <h4>Stay Informed</h4>
-            <p>Receive technology insights, delivery frameworks, and industry perspectives from our consulting team.</p>
+            <h4>{isPetClient ? 'Stay in the loop' : 'Stay Informed'}</h4>
+            <p>{isPetClient ? 'New arrivals, thoughtful tips, and a little extra joy, occasionally delivered.' : 'Receive technology insights, delivery frameworks, and industry perspectives from our consulting team.'}</p>
             <form onSubmit={handleSubscribe} className="cyber-footer__form">
               <div className="cyber-footer__input-wrapper">
                 <input
                   type="email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
-                  placeholder="Work email address"
+                  placeholder={isPetClient ? 'Your email address' : 'Work email address'}
                   required
                 />
                 <button type="submit" aria-label="Subscribe"><FaEnvelope /></button>
@@ -87,7 +83,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="cyber-footer__bottom">
-          <p>© {new Date().getFullYear()} Redweb Technologies Private Limited. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {isPetClient ? 'Better Humans. All rights reserved.' : 'Redweb Technologies Private Limited. All rights reserved.'}</p>
           <div className="cyber-footer__bottom-links">
             <a href="#privacy">Privacy Policy</a>
             <a href="#terms">Terms of Service</a>
