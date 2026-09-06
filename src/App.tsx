@@ -9,6 +9,8 @@ import JavaIDE from './components/JavaIDE/JavaIDE';
 import PythonIDE from './components/PythonIDE/PythonIDE';
 import DevelopersCorner from './components/DevelopersCorner/DevelopersCorner';
 import ShowcasePage from './pages/ShowcasePage/ShowcasePage';
+import PetSite from './pages/PetSite';
+import { isPetClient } from './config/client';
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
@@ -26,10 +28,11 @@ const App: React.FC = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/products-services" element={<ProductsServices />} />
-        <Route path="/contributors" element={<Contributors />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={isPetClient ? <PetSite /> : <About />} />
+        <Route path="/products-services" element={isPetClient ? <PetSite /> : <ProductsServices />} />
+        <Route path="/contributors" element={isPetClient ? <PetSite /> : <Contributors />} />
+        <Route path="/contact" element={isPetClient ? <PetSite /> : <Contact />} />
+        <Route path="/cart" element={isPetClient ? <PetSite /> : <Contact />} />
         <Route path="/javaIDE" element={<JavaIDE />} />
         <Route path="/pythonIDE" element={<PythonIDE />} />
         <Route
